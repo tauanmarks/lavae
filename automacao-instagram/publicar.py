@@ -28,7 +28,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime
 
-from comum import AUTO, impressao_digital, imagens, ler_post, pasta_ciclo, texto_final
+from comum import AUTO, eh_reel, impressao_digital, imagens, ler_post, midias, pasta_ciclo, texto_final
 
 HOSTS = {"instagram": "https://graph.instagram.com", "facebook": "https://graph.facebook.com"}
 
@@ -74,16 +74,74 @@ def url_publica_ok(url: str) -> str:
         return f"{url} → {e}"
 
 
-def esperar_pronto(cid: str, cfg: dict, limite=300):
+def esperar_pronto(cid: str, cfg: dict, limite=300, intervalo=5):
     t0 = time.time()
     while time.time() - t0 < limite:
-        st = chamar("GET", cid, cfg, {"fields": "status_code"}).get("status_code")
+        r = chamar("GET", cid, cfg, {"fields": "status_code,status"})
+        st = r.get("status_code")
         if st == "FINISHED":
             return
         if st in ("ERROR", "EXPIRED"):
-            raise SystemExit(f"ERRO: contêiner {cid} ficou {st}")
-        time.sleep(5)
+            raise SystemExit(f"ERRO: contêiner {cid} ficou {st}: {r.get('status', '')}")
+        time.sleep(intervalo)
     raise SystemExit(f"ERRO: contêiner {cid} não ficou pronto em {limite}s")
+
+
+def enviar_video(uri: str, arq, cfg: dict) -> None:
+    """Envio direto (resumable upload) do arquivo de vídeo para o contêiner criado."""
+    dados = arq.read_bytes()
+    req = urllib.request.Request(uri, data=dados, method="POST", headers={
+        "Authorization": f"OAuth {cfg['IG_ACCESS_TOKEN']}", "offset": "0", "file_size": str(len(dados)),
+        "Content-Type": "application/octet-stream"})
+    try:
+        with urllib.request.urlopen(req, timeout=600) as r:
+            resp = json.loads(r.read() or b"{}")
+    except urllib.error.HTTPError as e:
+        corpo = e.read().decode(errors="replace").replace(cfg["IG_ACCESS_TOKEN"], "***")
+        raise SystemExit(f"ERRO no envio do vídeo ({e.code}): {corpo[:800]}")
+    if not resp.get("success", True):
+        raise SystemExit(f"ERRO no envio do vídeo: {resp}")
+
+
+def publicar_reel(ciclo, post, reg, pub, de_verdade):
+    """Reels no feed: cria o contêiner (envio direto), manda o arquivo, espera processar e publica."""
+    cfg = carregar_config()
+    video = midias(ciclo, post)[0]
+    legenda = texto_final(post)
+    campos = {"media_type": "REELS", "upload_type": "resumable", "caption": legenda, "share_to_feed": "true"}
+    if post.get("capa_ms") is not None:
+        campos["thumb_offset"] = str(int(post["capa_ms"]))
+    if post.get("rotulo_ia"):
+        campos["is_ai_generated"] = "true"
+    passos = [f"POST /{{IG_USER_ID}}/media  " + "  ".join(f"{k}={v if k != 'caption' else f'<{len(legenda)} caracteres>'}"
+                                                         for k, v in campos.items()),
+              f"POST <uri de envio>  ({video.name}, {video.stat().st_size / 1e6:.1f} MB, cabeçalhos offset/file_size)",
+              "GET  /{container}?fields=status_code,status  (até FINISHED; vídeo leva alguns minutos)",
+              "POST /{IG_USER_ID}/media_publish  creation_id={container}", "GET  /{media_id}?fields=permalink"]
+    faltando = [k for k in ("IG_USER_ID", "IG_ACCESS_TOKEN") if not cfg[k]]
+    if not de_verdade:
+        print(f"SIMULAÇÃO — {ciclo.name}: reel aprovado por {reg['por']} em {reg['em']}, "
+              f"{video.name} {video.stat().st_size / 1e6:.1f} MB, legenda {len(legenda)} caracteres")
+        print("Chamadas que seriam feitas:\n  " + "\n  ".join(passos))
+        print("Configuração faltando para publicar: " + (", ".join(faltando) if faltando else "nada"))
+        return
+    if faltando:
+        raise SystemExit("ERRO: falta configurar " + ", ".join(faltando) + " (veja o topo deste arquivo).")
+    uid = cfg["IG_USER_ID"]
+    r = chamar("POST", f"{uid}/media", cfg, campos)
+    cont, uri = r["id"], r.get("uri")
+    if not uri:
+        raise SystemExit(f"ERRO: a API não devolveu o endereço de envio: {r}")
+    print(f"  contêiner {cont} criado; enviando {video.stat().st_size / 1e6:.1f} MB…", flush=True)
+    enviar_video(uri, video, cfg)
+    print("  vídeo enviado; aguardando o Instagram processar…", flush=True)
+    esperar_pronto(cont, cfg, limite=900, intervalo=15)
+    mid = chamar("POST", f"{uid}/media_publish", cfg, {"creation_id": cont})["id"]
+    link = chamar("GET", mid, cfg, {"fields": "permalink"}).get("permalink", "")
+    pub.write_text(json.dumps({"id": mid, "permalink": link, "formato": "reel",
+                               "em": datetime.now().isoformat(timespec="seconds"),
+                               "impressao_digital": reg["impressao_digital"]}, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"PUBLICADO: {link or mid}")
 
 
 def main():
@@ -101,10 +159,12 @@ def main():
         raise SystemExit("RECUSADO: ciclo sem aprovação. Mostre aprovacao.html e espere o 'aprovado'.")
     reg = json.loads(aprov.read_text(encoding="utf-8"))
     if reg.get("impressao_digital") != impressao_digital(ciclo, post):
-        raise SystemExit("RECUSADO: imagens ou legenda mudaram depois da aprovação. Gere de novo e peça nova aprovação.")
+        raise SystemExit("RECUSADO: mídia ou legenda mudaram depois da aprovação. Gere de novo e peça nova aprovação.")
     pub = ciclo / "publicacao.json"
     if pub.exists() and json.loads(pub.read_text(encoding="utf-8")).get("id"):
         raise SystemExit("RECUSADO: este ciclo já foi publicado (publicacao.json).")
+    if eh_reel(post):
+        return publicar_reel(ciclo, post, reg, pub, a.de_verdade)
     legenda = texto_final(post)
     carrossel = len(imgs) > 1
 

@@ -66,9 +66,15 @@ def conferir_slides_prontos(ciclo, post):
 
 def pagina_aprovacao(ciclo, post, digital):
     # Imagens embutidas: a página abre sozinha (celular, anexo, pré-visualização) sem depender da pasta slides/.
-    imgs = "".join(f'<figure><img src="data:image/jpeg;base64,{base64.b64encode(p.read_bytes()).decode()}" alt="Slide {k}">'
-                   f'<figcaption>{k}/{len(imagens(ciclo))}</figcaption></figure>'
-                   for k, p in enumerate(imagens(ciclo), 1))
+    if post.get("formato") == "reel":  # vídeo não cabe embutido: mostra a folha de quadros e aponta o arquivo
+        b64 = base64.b64encode((ciclo / "previa.jpg").read_bytes()).decode()
+        imgs = (f'<figure style="flex-basis:100%"><img src="data:image/jpeg;base64,{b64}" alt="Quadros do vídeo">'
+                f'<figcaption>Quadros do vídeo (o primeiro é a capa). Assista ao arquivo '
+                f'{html.escape(post.get("video", "video.mp4"))} nesta pasta antes de aprovar.</figcaption></figure>')
+    else:
+        imgs = "".join(f'<figure><img src="data:image/jpeg;base64,{base64.b64encode(p.read_bytes()).decode()}" alt="Slide {k}">'
+                       f'<figcaption>{k}/{len(imagens(ciclo))}</figcaption></figure>'
+                       for k, p in enumerate(imagens(ciclo), 1))
     pend = "".join(f"<li>{html.escape(x)}</li>" for x in post.get("pendencias", [])) or "<li>Nenhuma</li>"
     fontes = "".join(f"<li>{html.escape(x)}</li>" for x in post.get("fontes_fatos", []))
     legenda = html.escape(texto_final(post))

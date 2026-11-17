@@ -8,7 +8,7 @@ import argparse
 import json
 from datetime import datetime
 
-from comum import impressao_digital, imagens, ler_post, pasta_ciclo
+from comum import impressao_digital, ler_post, midias, pasta_ciclo
 
 
 def main():
@@ -19,10 +19,10 @@ def main():
     a = ap.parse_args()
     ciclo = pasta_ciclo(a.ciclo)
     post = ler_post(ciclo)
-    if not imagens(ciclo):
-        raise SystemExit("ERRO: ciclo sem slides — rode criar_post.py antes.")
+    if not midias(ciclo, post):
+        raise SystemExit("ERRO: ciclo sem slides/vídeo — rode criar_post.py ou criar_reel.py antes.")
     reg = {"status": "aprovado", "por": a.por, "em": datetime.now().isoformat(timespec="seconds"),
-           "impressao_digital": impressao_digital(ciclo, post), "slides": len(imagens(ciclo)), "obs": a.obs}
+           "impressao_digital": impressao_digital(ciclo, post), "midias": len(midias(ciclo, post)), "formato": post.get("formato"), "obs": a.obs}
     (ciclo / "aprovacao.json").write_text(json.dumps(reg, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"Aprovado: {ciclo.name} por {a.por} ({reg['impressao_digital'][:12]})")
 
