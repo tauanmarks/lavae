@@ -60,5 +60,13 @@ jobs:
           done
           if ! git diff --cached --quiet; then
             git commit -m "Registro de aprovação/publicação [publicado]"
-            git push
+            # a main pode ter andado durante a publicação (outra execução, um merge): junta e tenta de novo.
+            # -X theirs: no conflito de registro, vale o desta execução (que acabou de publicar).
+            for tentativa in 1 2 3 4 5; do
+              git pull --rebase -X theirs origin main && git push && exit 0
+              git rebase --abort 2>/dev/null || true
+              sleep $((tentativa * 5))
+            done
+            echo "::error::Não consegui gravar o registro. Publicado mesmo assim: copie a linha PUBLICADO do passo anterior."
+            exit 1
           fi
