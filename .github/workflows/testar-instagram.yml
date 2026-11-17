@@ -17,4 +17,5 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_API_VERSAO: ${{ vars.IG_API_VERSAO }}
+          IG_API_HOST: ${{ vars.IG_API_HOST }}
         run: python automacao-instagram/testar_acesso.py

@@ -15,6 +15,9 @@ Configuração (variáveis de ambiente ou arquivo automacao-instagram/.env, que 
                     <IG_BASE_URL>/<ciclo>/slides/slide-01.jpg. No GitHub Actions é preenchido sozinho com o
                     endereço "raw" do repositório no commit publicado (exige repositório público).
   IG_API_VERSAO     opcional, padrão v23.0
+  IG_API_HOST       opcional: "instagram" (padrão, login do Instagram, graph.instagram.com) ou
+                    "facebook" (login do Facebook com Página ligada ao Instagram, graph.facebook.com;
+                    token com instagram_basic + instagram_content_publish + pages_show_list + pages_read_engagement)
 """
 import argparse
 import json
@@ -27,7 +30,7 @@ from datetime import datetime
 
 from comum import AUTO, impressao_digital, imagens, ler_post, pasta_ciclo, texto_final
 
-API = "https://graph.instagram.com"
+HOSTS = {"instagram": "https://graph.instagram.com", "facebook": "https://graph.facebook.com"}
 
 
 def carregar_config() -> dict:
@@ -37,12 +40,16 @@ def carregar_config() -> dict:
             if "=" in linha and not linha.strip().startswith("#"):
                 k, v = linha.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip().strip('"'))
-    return {k: os.environ.get(k, "") for k in ("IG_USER_ID", "IG_ACCESS_TOKEN", "IG_BASE_URL")} | {
-        "IG_API_VERSAO": os.environ.get("IG_API_VERSAO") or "v23.0"}  # vazio no Actions quando a variável não existe
+    host = (os.environ.get("IG_API_HOST") or "instagram").strip().lower()
+    if host not in HOSTS:
+        raise SystemExit(f"ERRO: IG_API_HOST deve ser 'instagram' ou 'facebook' (veio '{host}')")
+    # "or": no Actions a variável não definida chega vazia
+    return {k: os.environ.get(k, "").strip() for k in ("IG_USER_ID", "IG_ACCESS_TOKEN", "IG_BASE_URL")} | {
+        "IG_API_VERSAO": os.environ.get("IG_API_VERSAO") or "v23.0", "IG_API_HOST": host, "API": HOSTS[host]}
 
 
 def chamar(metodo: str, caminho: str, cfg: dict, campos: dict) -> dict:
-    url = f"{API}/{cfg['IG_API_VERSAO']}/{caminho}"
+    url = f"{cfg['API']}/{cfg['IG_API_VERSAO']}/{caminho}"
     campos = dict(campos, access_token=cfg["IG_ACCESS_TOKEN"])
     dados = urllib.parse.urlencode(campos).encode()
     if metodo == "GET":
