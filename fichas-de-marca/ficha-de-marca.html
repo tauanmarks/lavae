@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fichas de Marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Nunito+Sans:wght@400;800&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#F4F2EE; --surface:#FFFFFF; --fg:#17161A; --muted:#6B6772; --line:#E3DFD8; --chip:#ECE8E1; color-scheme:light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#121115; --surface:#1C1B21; --fg:#F2EFEA; --muted:#A6A1AD; --line:#2E2C35; --chip:#2A2830; color-scheme:dark; } }
+:root[data-theme="dark"] { --bg:#121115; --surface:#1C1B21; --fg:#F2EFEA; --muted:#A6A1AD; --line:#2E2C35; --chip:#2A2830; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.6 "Inter","Segoe UI",system-ui,sans-serif; padding:0 max(16px,env(safe-area-inset-left)); }
+.wrap { max-width:1100px; margin:0 auto; padding:40px 0 100px; display:grid; gap:56px; }
+h1 { font:800 clamp(38px,6vw,68px)/1 "Space Grotesk",system-ui,sans-serif; letter-spacing:-.035em; margin:0; }
+h2 { font-size:clamp(40px,6vw,64px); line-height:1; margin:4px 0 6px; letter-spacing:-.02em; }
+h3 { font:700 13px/1 "Space Grotesk",sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:28px 0 12px; }
+h4 { margin:0 0 8px; font:700 17px/1.2 "Space Grotesk",sans-serif; }
+p { margin:0 0 8px; } ul { margin:0; padding-left:18px; } li { margin:0 0 6px; }
+.muted { color:var(--muted); }
+.lead { font-size:17px; color:var(--muted); max-width:70ch; }
+nav { position:sticky; top:0; z-index:5; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(8px); display:flex; gap:8px; overflow-x:auto; padding:10px 0; border-bottom:1px solid var(--line); }
+nav a { flex:none; text-decoration:none; color:var(--fg); font-weight:700; font-size:13px; padding:6px 12px; border-radius:999px; background:var(--chip); border-left:6px solid var(--acc); }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px; min-width:0; }
+.regras { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.tbl { overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+table { border-collapse:collapse; width:100%; min-width:640px; font-size:14px; }
+th,td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+th { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+td a { color:var(--fg); font-weight:800; }
+.marca { border-top:6px solid var(--acc); padding-top:28px; scroll-margin-top:60px; }
+.m-head { display:grid; grid-template-columns:1fr auto; gap:32px; align-items:start; }
+@media (max-width:760px) { .m-head { grid-template-columns:1fr; } .phone { justify-self:center; } }
+.num { font:700 12px/1 "Space Grotesk",sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.sig { font-size:20px; font-style:italic; color:var(--muted); }
+.chips { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 12px; }
+.chip { background:var(--chip); border-radius:999px; padding:3px 10px; font-size:13px; font-weight:600; }
+.aprov { display:inline-flex; gap:8px; align-items:center; font-weight:700; margin:8px 0; cursor:pointer; }
+.aprov input { width:18px; height:18px; accent-color:var(--acc); }
+.obs { width:100%; min-height:72px; resize:vertical; border:1px solid var(--line); border-radius:10px; padding:10px; background:var(--surface); color:var(--fg); font:inherit; }
+.palette { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+.sw { border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); }
+.sw-c { height:76px; display:flex; align-items:flex-end; padding:8px 10px; font-weight:800; font-size:15px; }
+.sw-i { padding:8px 10px 10px; display:grid; gap:2px; font-size:13px; line-height:1.4; }
+.sw-i code { color:var(--muted); font-size:12px; }
+.fonts { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px; }
+.font { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px; display:grid; gap:4px; }
+.font small { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; font-weight:700; }
+.font .spec { font-size:34px; line-height:1.1; min-height:44px; overflow-wrap:anywhere; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:12px; margin-top:28px; }
+dl { display:grid; grid-template-columns:auto 1fr; gap:4px 12px; margin:0; font-size:14px; }
+dt { color:var(--muted); } dd { margin:0; }
+.extra { border:2px dashed var(--acc); }
+/* prévia 9:16 */
+.phone { position:relative; width:270px; aspect-ratio:9/16; border-radius:26px; overflow:hidden; box-shadow:0 18px 40px -18px #0008; border:6px solid #111; background:#000; }
+.phone-bg { position:absolute; inset:0; background:radial-gradient(120% 80% at 30% 20%,var(--b),var(--a)); }
+.ph-silhueta { position:absolute; left:50%; bottom:-6%; width:62%; aspect-ratio:1/1.25; transform:translateX(-50%); background:radial-gradient(circle at 50% 22%,#0003 0 22%,transparent 23%),radial-gradient(ellipse at 50% 100%,#0003 0 55%,transparent 56%); }
+.zoom-punch { animation:zp 3s infinite steps(1); }
+@keyframes zp { 0%,55% { transform:scale(1); } 56%,100% { transform:scale(var(--z)); } }
+.zoom-slow { animation:zs 6s ease-in-out infinite alternate; }
+@keyframes zs { from { transform:scale(1); } to { transform:scale(var(--z)); } }
+.ph-title { position:absolute; top:12%; left:8%; right:8%; font-size:36px; line-height:.95; letter-spacing:-.01em; }
+.ph-tag { position:absolute; top:calc(12% + 52px); left:8%; font-size:12px; padding:3px 8px; border-radius:6px; }
+.ph-cap { position:absolute; left:6%; right:12%; text-align:center; line-height:1.15; transform-origin:center; }
+.ph-cap .kw { display:inline-block; }
+.ph-safe { position:absolute; inset:calc(220/1920*100%) calc(160/1080*100%) calc(380/1920*100%) 0; border:1px dashed #fff5; border-left:0; pointer-events:none; }
+.cap-pop { animation:cp 3s infinite; } @keyframes cp { 0% { opacity:0; transform:scale(.9); } 4%,90% { opacity:1; transform:scale(1); } 100% { opacity:0; } }
+.cap-elastic { animation:ce 1.5s infinite; } @keyframes ce { 0% { transform:scale(.8); opacity:0; } 8% { transform:scale(1.12); opacity:1; } 14%,92% { transform:scale(1); opacity:1; } 100% { opacity:0; } }
+.cap-up { animation:cu 3s infinite; } @keyframes cu { 0% { opacity:0; transform:translateY(8px); } 5%,90% { opacity:1; transform:none; } 100% { opacity:0; } }
+.cap-fade { animation:cf 3s infinite; } @keyframes cf { 0% { opacity:0; } 8%,88% { opacity:1; } 100% { opacity:0; } }
+.cap-blur { animation:cb 4s infinite; } @keyframes cb { 0% { opacity:0; filter:blur(6px); } 10%,88% { opacity:1; filter:none; } 100% { opacity:0; } }
+@media (prefers-reduced-motion: reduce) { .phone-bg,.ph-cap { animation:none !important; } }
+footer { color:var(--muted); font-size:13px; border-top:1px solid var(--line); padding-top:16px; }
+</style></head>
+<body><div class="wrap">
+<header style="display:grid;gap:14px">
+  <span class="num">Editor Variado · versão 1.0 · 2026-11-15</span>
+  <h1>Fichas de Marca</h1>
+  <p class="lead">1 marcas de edição, uma para cada contexto de vídeo. Cada uma tem fontes, cores, legendas, cortes, zooms, ritmo, animações, música e sons próprios. Marque as aprovadas e anote ajustes: eu atualizo o <code>marcas.json</code> e esta ficha.</p>
+</header>
+<nav><a href='#espuma' style='--acc:#8CC8F2'>Espuma</a></nav>
+<section style="display:grid;gap:14px"><h3 style="margin:0">Qual marca usar</h3><div class='tbl'><table><thead><tr><th>Marca</th><th>Quando usar</th><th>Plano médio</th><th>Música</th></tr></thead><tbody><tr><td><a href='#espuma'>Espuma</a></td><td>Lavanderia, Limpeza, Serviço self-service, Passo a passo de estabelecimento, Antes e depois de limpeza</td><td>2,5 a 4 s</td><td>Ambiente relaxante (pads suaves, sinos leves, água)</td></tr></tbody></table></div>
+<p class="muted">Na análise do vídeo bruto eu sugiro a marca pelos sinais da fala e da imagem; a escolha final é sua, no storyboard. Um vídeo pode misturar: marca principal + um recurso de outra (ex.: Diário Solto com o veredito da Prova Real).</p></section>
+<section style="display:grid;gap:14px"><h3 style="margin:0">Regras de todas as marcas</h3><div class="regras"><div class='card'><h4>Formato padrao</h4><p>1080x1920 (9:16), 30 fps. Versões 1:1 e 16:9 sob pedido.</p></div><div class='card'><h4>Zonas seguras 9x16</h4><p>Nada importante nos 220 px de cima, 380 px de baixo e 160 px da direita (interface do Reels/TikTok/Shorts).</p></div><div class='card'><h4>Audio</h4><p>Fala tratada (arnndn com ferramentas/modelos/cb.rnnn + EQ leve), master em -14 LUFS integrado, pico real -1 dBTP. Música abaixa sob a fala (ducking) no valor de cada marca.</p></div><div class='card'><h4>Legendas</h4><p>Sempre presentes (a maioria assiste sem som). Revisadas palavra a palavra contra o áudio: nomes, números e marcas grafados certo.</p></div><div class='card'><h4>Gancho</h4><p>Os primeiros 1,5 s precisam de um motivo para ficar: resultado, pergunta, frase forte ou movimento.</p></div><div class='card'><h4>Cortes</h4><p>Corte só em silêncio entre palavras (nunca dentro de uma palavra), nunca no meio de uma ideia, e nunca descartar um trecho interessante sem listar no storyboard.</p></div><div class='card'><h4>Aprovacao</h4><p>Nada é renderizado sem storyboard aprovado.</p></div></div></section>
+
+<section class="marca" id="espuma" style="--acc:#8CC8F2">
+  <div class="m-head">
+    <div class="m-intro">
+      <span class="num">Marca 01</span>
+      <h2 style="font-family:'Quicksand';font-weight:700;font-style:normal">Espuma</h2>
+      <p class="sig">“Limpo, leve e sem complicação.”</p>
+      <div class="chips"><span class="chip">Lavanderia</span><span class="chip">Limpeza</span><span class="chip">Serviço self-service</span><span class="chip">Passo a passo de estabelecimento</span><span class="chip">Antes e depois de limpeza</span></div>
+      <p class="muted">Personalidade: calma · clara · acolhedora · prática</p>
+      <label class="aprov"><input type="checkbox" data-id="espuma"> Aprovada</label>
+      <textarea class="obs" data-id="espuma" placeholder="Anotações de revisão desta marca (ficam salvas neste navegador)"></textarea>
+    </div>
+    
+<div class="phone" aria-label="Prévia 9:16 da marca Espuma">
+  <div class="phone-bg zoom-slow" style="--a:#1F4BA5;--b:#8CC8F2;--z:1.35">
+    <div class="ph-silhueta"></div>
+  </div>
+  <div class="ph-title" style="font-family:'Quicksand';font-style:normal;font-weight:700;color:#8CC8F2">Espuma</div>
+  <div class="ph-tag" style="font-family:'Lexend';font-weight:500;background:#8EDC3A;color:#0E2350">Lavanderia</div>
+  <div class="ph-cap cap-up" style="top:72%;font-family:'Nunito Sans';font-weight:800;font-size:21.6px;color:#FFFFFF;text-transform:none;letter-spacing:0.0px;-webkit-text-stroke:2.2px #0E2350;paint-order:stroke fill;"><span>olha</span> <span>como</span> <span>fica</span> <span>o</span> <span class="kw" style="color:#8EDC3A;">resultado</span></div>
+  <div class="ph-safe" title="Zonas seguras: topo 220 px, base 380 px, direita 160 px"></div>
+</div>
+  </div>
+
+  <h3>Cores</h3><div class="palette"><div class="sw"><div class="sw-c" style="background:#1F4BA5;color:#fff">Azul Lavaê</div><div class="sw-i"><code>#1F4BA5</code><span>Cartões de passo, títulos (azul das placas da loja)</span></div></div><div class="sw"><div class="sw-c" style="background:#8CC8F2;color:#111">Azul Céu</div><div class="sw-i"><code>#8CC8F2</code><span>Bolhas, detalhes, barra de progresso</span></div></div><div class="sw"><div class="sw-c" style="background:#8EDC3A;color:#111">Verde Totem</div><div class="sw-i"><code>#8EDC3A</code><span>Destaque da legenda, check de passo feito (verde do totem)</span></div></div><div class="sw"><div class="sw-c" style="background:#EAF4FC;color:#111">Névoa</div><div class="sw-i"><code>#EAF4FC</code><span>Fundo de etiquetas e cartões claros</span></div></div><div class="sw"><div class="sw-c" style="background:#0E2350;color:#fff">Marinho</div><div class="sw-i"><code>#0E2350</code><span>Contorno da legenda, texto em fundo claro</span></div></div><div class="sw"><div class="sw-c" style="background:#FFFFFF;color:#111">Algodão</div><div class="sw-i"><code>#FFFFFF</code><span>Texto da legenda</span></div></div></div>
+  <h3>Fontes</h3><div class="fonts"><div class="font"><small>Títulos</small><div class="spec" style="font-family:'Quicksand';font-weight:700;font-style:normal">Aa Bb 123 · ção</div><b>Quicksand 700</b><span class="muted">Títulos, números dos passos, encerramento</span></div><div class="font"><small>Legenda</small><div class="spec" style="font-family:'Nunito Sans';font-weight:800;font-style:normal">Aa Bb 123 · ção</div><b>Nunito Sans 800</b><span class="muted">Legendas da narração</span></div><div class="font"><small>Apoio</small><div class="spec" style="font-family:'Lexend';font-weight:500;font-style:normal">Aa Bb 123 · ção</div><b>Lexend 500</b><span class="muted">Etiquetas, valores, tempo de ciclo</span></div></div>
+
+  <div class="grid">
+    <div class="card"><h4>Legendas</h4><p>Nunito Sans ExtraBold branca, contorno Marinho 6 px, cantos suaves</p>
+      <dl><dt>Palavras por bloco</dt><dd>3 a 6</dd><dt>Posição</dt><dd>Base em 72% da altura</dd>
+      <dt>Destaque</dt><dd>Ação do passo em Verde Totem (ex.: &#x27;aproxime&#x27;, &#x27;Pix&#x27;).</dd><dt>Entrada</dt><dd>Fade + subida curta (0,2 s)</dd></dl></div>
+    <div class="card"><h4>Cortes</h4><p><b>Silêncio máximo:</b> 0,6 s</p><ul><li>A narração conduz: cada passo da tela aparece enquanto é narrado.</li><li>Ações longas e repetitivas (colocar roupa, limpar filtro, processando) aceleradas 2x a 4x, sem cortar o começo e o fim da ação.</li><li>Telas do sistema ficam tempo suficiente para ler (mín. 1,5 s em velocidade normal).</li><li>Dados pessoais na tela (nome, CPF, cartão) sempre desfocados.</li></ul></div>
+    <div class="card"><h4>Zooms</h4><ul><li><b>Zoom na tela</b> · 100% → 135% · 0,6 s suave<br><span class='muted'>Botão ou informação citada na narração</span></li><li><b>Deriva lenta</b> · 100% → 106% · ao longo do plano<br><span class='muted'>Planos de máquina e roupas</span></li></ul></div>
+    <div class="card"><h4>Ritmo</h4><dl><dt>Plano médio</dt><dd>2,5 a 4 s</dd><dt>BPM de referência</dt><dd>70 a 80</dd></dl><p class="muted">Calmo e contínuo; um passo por vez, com número do passo.</p></div>
+    <div class="card"><h4>Animações</h4><ul><li><b>Número do passo</b><br><span class='muted'>Círculo Azul Lavaê com número em Quicksand + nome do passo, entra com bolhas.</span></li><li><b>Bolhas</b><br><span class='muted'>Bolhas Azul Céu subindo nas transições.</span></li><li><b>Check</b><br><span class='muted'>Check Verde Totem quando o passo termina (ex.: pagamento aprovado).</span></li><li><b>Barra de passos</b><br><span class='muted'>Progresso no topo com as etapas do serviço.</span></li></ul></div>
+    <div class="card"><h4>Transições</h4><ul><li>Dissolve curto (0,3 s)</li><li>Onda/bolhas subindo</li><li>Corte seco no meio da ação</li></ul></div>
+    <div class="card"><h4>Música</h4><dl><dt>Gênero</dt><dd>Ambiente relaxante (pads suaves, sinos leves, água)</dd><dt>BPM</dt><dd>72</dd><dt>Clima</dt><dd>Tranquilo, limpo</dd>
+      <dt>Sob a fala</dt><dd>-20 dB</dd></dl><p class="muted">Sem bateria; sobe nos intervalos sem narração.</p></div>
+    <div class="card"><h4>Sons</h4><ul><li><b>Bolha</b> <span class='muted'>— Entrada de etiquetas e números</span></li><li><b>Clique suave</b> <span class='muted'>— Toques na tela</span></li><li><b>Ding suave</b> <span class='muted'>— Pagamento aprovado / fim</span></li><li><b>Whoosh macio</b> <span class='muted'>— Troca de etapa</span></li></ul></div>
+    <div class="card"><h4>Cor da imagem</h4><p>Limpa e fresca: branco neutro, leve frio nas sombras, saturação suave nos azuis.</p></div>
+    <div class="card extra"><h4>Sugestões que agregam</h4><ul><li>Cartão de tempo (&#x27;39 min depois&#x27;) para pular a espera do ciclo.</li><li>Resumo final em 4 ícones: CPF, máquina, pagamento, roupa.</li><li>Versão sem narração com legendas para quem assiste sem som.</li><li>Endereço e horário da loja no encerramento.</li></ul></div>
+  </div>
+</section>
+<footer>Gerado por <code>ferramentas/pipeline/gerar_ficha.py</code> a partir de <code>fichas-de-marca/marcas.json</code>. As prévias 9:16 são aproximações em CSS; a linha tracejada marca a zona segura.</footer>
+</div>
+<script>
+// Aprovação e anotações ficam só neste navegador (conveniência de revisão).
+const K = "fichas-marca-revisao";
+let st = {}; try { st = JSON.parse(localStorage.getItem(K) || "{}"); } catch (_) {}
+const save = () => { try { localStorage.setItem(K, JSON.stringify(st)); } catch (_) {} };
+document.querySelectorAll(".aprov input").forEach(i => { i.checked = !!(st[i.dataset.id] || {}).ok;
+  i.onchange = () => { st[i.dataset.id] = {...(st[i.dataset.id] || {}), ok: i.checked}; save(); }; });
+document.querySelectorAll(".obs").forEach(t => { t.value = (st[t.dataset.id] || {}).obs || "";
+  t.oninput = () => { st[t.dataset.id] = {...(st[t.dataset.id] || {}), obs: t.value}; save(); }; });
+</script>
+</body></html>

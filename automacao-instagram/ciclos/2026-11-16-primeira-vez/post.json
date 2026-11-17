@@ -1,0 +1,78 @@
+{
+ "ciclo": "2026-11-16-primeira-vez",
+ "conta": "lavae",
+ "formato": "carrossel",
+ "marca": "espuma",
+ "pauta": "Primeira vez na lavanderia self-service: os 4 passos da Lavaê + dica da etiqueta",
+ "fontes_fatos": [
+  "Passos, formas de pagamento, ciclos e filtro da secadora: roteiro do vídeo aprovado (referencias/exemplo-lavae/roteiro.json)",
+  "Barras sob o símbolo de lavagem: pesquisa.md"
+ ],
+ "slides": [
+  {
+   "tipo": "capa",
+   "titulo": "Primeira vez na lavanderia?",
+   "destaque": "sem complicação",
+   "pilula": "4 passos"
+  },
+  {
+   "tipo": "passo",
+   "n": 1,
+   "titulo": "Acesse o totem com o seu CPF",
+   "texto": "Depois, escolha o serviço: lavar ou secar.",
+   "etiqueta": "lavar · secar"
+  },
+  {
+   "tipo": "passo",
+   "n": 2,
+   "titulo": "Escolha a máquina e pague",
+   "texto": "Selecione uma máquina disponível, confirme e aproxime o cartão ou o celular.",
+   "etiqueta": "débito · crédito · Pix"
+  },
+  {
+   "tipo": "passo",
+   "n": 3,
+   "titulo": "Coloque as roupas e inicie",
+   "texto": "Feche bem a porta, escolha o ciclo e aperte iniciar. A lavagem começa na hora.",
+   "etiqueta": "normal · delicadas"
+  },
+  {
+   "tipo": "passo",
+   "n": 4,
+   "titulo": "Hora de secar",
+   "texto": "No totem, escolha secar e a sua secadora. Limpe o filtro de fiapos, passe as roupas e escolha a temperatura.",
+   "etiqueta": "filtro limpo seca melhor"
+  },
+  {
+   "tipo": "dica",
+   "titulo": "Normal ou delicadas?",
+   "texto": "Olhe a etiqueta da roupa, embaixo do símbolo da bacia:",
+   "itens": [
+    "sem barra → normal",
+    "1 ou 2 barras → delicadas"
+   ]
+  },
+  {
+   "tipo": "final",
+   "frase": "lavar ficou fácil!",
+   "chamada": "Salve para a sua primeira vez 💙"
+  }
+ ],
+ "legenda": "Primeira vez numa lavanderia self-service? Na Lavaê é assim:\n\n1️⃣ Acesse o totem com o seu CPF e escolha lavar ou secar\n2️⃣ Escolha a máquina e pague no débito, crédito ou Pix\n3️⃣ Coloque as roupas, escolha o ciclo e aperte iniciar\n4️⃣ Para secar: mesmo caminho no totem, filtro limpo e temperatura escolhida\n\nDica: barrinhas embaixo da bacia na etiqueta = ciclo delicadas.\n\nSalve este post e manda para quem ainda não conhece 💙",
+ "hashtags": [
+  "#lavanderia",
+  "#lavanderiaselfservice",
+  "#lavae",
+  "#roupalimpa",
+  "#dicasdelavagem"
+ ],
+ "rotulo_ia": false,
+ "agendar_para": null,
+ "pendencias": [
+  "Conferir: a Lavaê aceita débito, crédito e Pix em todas as máquinas (veio do vídeo aprovado).",
+  "Endereço e horário não entraram no último slide porque não estão nos arquivos. Quer incluir?",
+  "Rótulo de conteúdo de IA ('Informações de IA') está desligado: as artes são gráficas, sem foto gerada. Confirme."
+ ],
+ "publicar": false,
+ "obs": "Versão de teste do Remotion, substituída pela versão Canva (2026-11-16-primeira-vez-canva). Não publicar."
+}

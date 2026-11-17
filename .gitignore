@@ -1,0 +1,32 @@
+# Repositório da automação de posts (vai para o GitHub). Só entra o necessário para gerar e publicar posts.
+# Filmagem, vídeos prontos e protótipos ficam só no computador.
+
+videos-brutos/
+videos-prontos/
+storyboards/
+prototipo-papelprint/
+prototipo-video/
+referencias/musicas/
+logo lavanderia.png
+
+# Remotion: dependências, renders e arquivos pesados
+ferramentas/remotion-projeto/node_modules/
+ferramentas/remotion-projeto/out/
+ferramentas/remotion-projeto/public/sons/
+ferramentas/remotion-projeto/public/*/
+!ferramentas/remotion-projeto/public/lavae/
+ferramentas/modelos/
+ferramentas/sons/
+
+# Automação: arquivos gerados ou secretos
+automacao-instagram/.env
+automacao-instagram/ciclos/*/aprovacao.html
+automacao-instagram/ciclos/*/_render/
+automacao-instagram/ciclos/*/aprovacao-anterior-*.json
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Skills do template do Remotion (não precisam ir para o repositório)
+ferramentas/remotion-projeto/.agents/

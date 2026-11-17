@@ -1,0 +1,221 @@
+{
+  "versao": "1.0",
+  "data": "2026-11-15",
+  "nota": "Cópia da marca Espuma do Editor_Variado (cores da Lavaê). Fonte única: edite aqui e rode gerar_ficha.py.",
+  "regras_gerais": {
+    "formato_padrao": "1080x1920 (9:16), 30 fps. Versões 1:1 e 16:9 sob pedido.",
+    "zonas_seguras_9x16": "Nada importante nos 220 px de cima, 380 px de baixo e 160 px da direita (interface do Reels/TikTok/Shorts).",
+    "audio": "Fala tratada (arnndn com ferramentas/modelos/cb.rnnn + EQ leve), master em -14 LUFS integrado, pico real -1 dBTP. Música abaixa sob a fala (ducking) no valor de cada marca.",
+    "legendas": "Sempre presentes (a maioria assiste sem som). Revisadas palavra a palavra contra o áudio: nomes, números e marcas grafados certo.",
+    "gancho": "Os primeiros 1,5 s precisam de um motivo para ficar: resultado, pergunta, frase forte ou movimento.",
+    "cortes": "Corte só em silêncio entre palavras (nunca dentro de uma palavra), nunca no meio de uma ideia, e nunca descartar um trecho interessante sem listar no storyboard.",
+    "aprovacao": "Nada é renderizado sem storyboard aprovado."
+  },
+  "marcas": [
+    {
+      "id": "espuma",
+      "nome": "Espuma",
+      "assinatura": "Limpo, leve e sem complicação.",
+      "contextos": [
+        "Lavanderia",
+        "Limpeza",
+        "Serviço self-service",
+        "Passo a passo de estabelecimento",
+        "Antes e depois de limpeza"
+      ],
+      "sinais_de_deteccao": [
+        "lavanderia",
+        "lavar",
+        "secar",
+        "lavagem",
+        "secagem",
+        "roupa",
+        "máquina",
+        "sabão",
+        "amaciante",
+        "limpeza",
+        "limpar",
+        "totem",
+        "self-service"
+      ],
+      "personalidade": [
+        "calma",
+        "clara",
+        "acolhedora",
+        "prática"
+      ],
+      "fontes": {
+        "titulo": {
+          "familia": "Quicksand",
+          "peso": "700",
+          "uso": "Títulos, números dos passos, encerramento"
+        },
+        "legenda": {
+          "familia": "Nunito Sans",
+          "peso": "800",
+          "uso": "Legendas da narração"
+        },
+        "apoio": {
+          "familia": "Lexend",
+          "peso": "500",
+          "uso": "Etiquetas, valores, tempo de ciclo"
+        }
+      },
+      "cores": [
+        {
+          "nome": "Azul Lavaê",
+          "hex": "#1F4BA5",
+          "uso": "Cartões de passo, títulos (azul das placas da loja)"
+        },
+        {
+          "nome": "Azul Céu",
+          "hex": "#8CC8F2",
+          "uso": "Bolhas, detalhes, barra de progresso"
+        },
+        {
+          "nome": "Verde Totem",
+          "hex": "#8EDC3A",
+          "uso": "Destaque da legenda, check de passo feito (verde do totem)"
+        },
+        {
+          "nome": "Névoa",
+          "hex": "#EAF4FC",
+          "uso": "Fundo de etiquetas e cartões claros"
+        },
+        {
+          "nome": "Marinho",
+          "hex": "#0E2350",
+          "uso": "Contorno da legenda, texto em fundo claro"
+        },
+        {
+          "nome": "Algodão",
+          "hex": "#FFFFFF",
+          "uso": "Texto da legenda"
+        }
+      ],
+      "legendas": {
+        "estilo": "Nunito Sans ExtraBold branca, contorno Marinho 6 px, cantos suaves",
+        "palavras_por_bloco": "3 a 6",
+        "posicao": "Base em 72% da altura",
+        "destaque": "Ação do passo em Verde Totem (ex.: 'aproxime', 'Pix').",
+        "entrada": "Fade + subida curta (0,2 s)"
+      },
+      "cortes": {
+        "silencio_max_s": 0.6,
+        "regras": [
+          "A narração conduz: cada passo da tela aparece enquanto é narrado.",
+          "Ações longas e repetitivas (colocar roupa, limpar filtro, processando) aceleradas 2x a 4x, sem cortar o começo e o fim da ação.",
+          "Telas do sistema ficam tempo suficiente para ler (mín. 1,5 s em velocidade normal).",
+          "Dados pessoais na tela (nome, CPF, cartão) sempre desfocados."
+        ]
+      },
+      "zooms": [
+        {
+          "nome": "Zoom na tela",
+          "escala": "100% → 135%",
+          "duracao": "0,6 s suave",
+          "quando": "Botão ou informação citada na narração"
+        },
+        {
+          "nome": "Deriva lenta",
+          "escala": "100% → 106%",
+          "duracao": "ao longo do plano",
+          "quando": "Planos de máquina e roupas"
+        }
+      ],
+      "ritmo": {
+        "plano_medio_s": "2,5 a 4",
+        "bpm": "70 a 80",
+        "notas": "Calmo e contínuo; um passo por vez, com número do passo."
+      },
+      "animacoes": [
+        {
+          "nome": "Número do passo",
+          "descricao": "Círculo Azul Lavaê com número em Quicksand + nome do passo, entra com bolhas."
+        },
+        {
+          "nome": "Bolhas",
+          "descricao": "Bolhas Azul Céu subindo nas transições."
+        },
+        {
+          "nome": "Check",
+          "descricao": "Check Verde Totem quando o passo termina (ex.: pagamento aprovado)."
+        },
+        {
+          "nome": "Barra de passos",
+          "descricao": "Progresso no topo com as etapas do serviço."
+        }
+      ],
+      "transicoes": [
+        "Dissolve curto (0,3 s)",
+        "Onda/bolhas subindo",
+        "Corte seco no meio da ação"
+      ],
+      "musica": {
+        "genero": "Ambiente relaxante (pads suaves, sinos leves, água)",
+        "bpm": "72",
+        "clima": "Tranquilo, limpo",
+        "volume_sob_fala_db": -20,
+        "regras": "Sem bateria; sobe nos intervalos sem narração."
+      },
+      "sons": [
+        {
+          "nome": "Bolha",
+          "quando": "Entrada de etiquetas e números"
+        },
+        {
+          "nome": "Clique suave",
+          "quando": "Toques na tela"
+        },
+        {
+          "nome": "Ding suave",
+          "quando": "Pagamento aprovado / fim"
+        },
+        {
+          "nome": "Whoosh macio",
+          "quando": "Troca de etapa"
+        }
+      ],
+      "cor_imagem": "Limpa e fresca: branco neutro, leve frio nas sombras, saturação suave nos azuis.",
+      "extras": [
+        "Cartão de tempo ('39 min depois') para pular a espera do ciclo.",
+        "Resumo final em 4 ícones: CPF, máquina, pagamento, roupa.",
+        "Versão sem narração com legendas para quem assiste sem som.",
+        "Endereço e horário da loja no encerramento."
+      ],
+      "codigo": {
+        "fontes": {
+          "titulo": "Quicksand",
+          "tituloPeso": "700",
+          "tituloEstilo": "normal",
+          "legenda": "NunitoSans",
+          "legendaPeso": "800",
+          "apoio": "Lexend",
+          "apoioPeso": "500"
+        },
+        "legenda": {
+          "modo": "bloco",
+          "tamanho": 60,
+          "caixaAlta": false,
+          "contorno": 6,
+          "corTexto": "#FFFFFF",
+          "corContorno": "#0E2350",
+          "corDestaque": "#8EDC3A",
+          "fundoDestaque": null,
+          "y": 0.72,
+          "entrada": "subir"
+        },
+        "zoom": {
+          "punch": 1.35,
+          "lento": 1.06,
+          "duracaoPunch": 0.6
+        },
+        "transicao": "dissolve",
+        "fundoDemo": [
+          "#1F4BA5",
+          "#8CC8F2"
+        ]
+      }
+    }
+  ]
+}

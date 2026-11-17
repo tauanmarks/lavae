@@ -1,0 +1,58 @@
+{
+ "voz": "pt-BR-FranciscaNeural",
+ "velocidade": "-6%",
+ "falas": [
+  {
+   "id": "abertura",
+   "texto": "Lavar e secar suas roupas na Lavaê é muito mais fácil do que parece. Veja só como é simples!"
+  },
+  {
+   "id": "cpf",
+   "texto": "Primeiro, acesse o totem com o seu CPF."
+  },
+  {
+   "id": "servico",
+   "texto": "Depois, escolha o serviço: lavar ou secar."
+  },
+  {
+   "id": "maquina",
+   "texto": "Selecione uma máquina disponível e confirme."
+  },
+  {
+   "id": "pagamento",
+   "texto": "Na hora de pagar, você escolhe: débito, crédito ou Pix."
+  },
+  {
+   "id": "aprovado",
+   "texto": "É só aproximar o cartão ou o celular… e pronto: pagamento aprovado!"
+  },
+  {
+   "id": "roupas",
+   "texto": "Agora, abra a lavadora que você escolheu e coloque suas roupas."
+  },
+  {
+   "id": "ciclo",
+   "texto": "Feche bem a porta, escolha o ciclo, normal ou delicadas, e aperte iniciar. A lavagem começa na hora."
+  },
+  {
+   "id": "filtro",
+   "texto": "Enquanto lava, já deixe a secadora pronta: retire o filtro e limpe os fiapos."
+  },
+  {
+   "id": "espera",
+   "texto": "Agora é só relaxar até a lavagem terminar."
+  },
+  {
+   "id": "secar",
+   "texto": "Para secar, o caminho no totem é o mesmo: escolha secar e a sua secadora."
+  },
+  {
+   "id": "secadora",
+   "texto": "Depois, é só passar as roupas para a secadora, escolher a temperatura e pronto."
+  },
+  {
+   "id": "final",
+   "texto": "Roupa limpinha e sequinha, sem complicação. Lavaê: lavar ficou fácil!"
+  }
+ ]
+}

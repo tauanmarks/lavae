@@ -1,0 +1,1278 @@
+{
+ "projeto": "lavae",
+ "marca": "espuma",
+ "fps": 30,
+ "duracao": 76.773,
+ "planos": [
+  {
+   "i": 0,
+   "tag": "abertura",
+   "tipo": "broll",
+   "t": 0.0,
+   "d": 7.5,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9302.mp4",
+   "a": 0.0,
+   "b": 3.9,
+   "vel": 0.52,
+   "mudo": true
+  },
+  {
+   "i": 1,
+   "tag": "1 · CPF",
+   "tipo": "acao",
+   "t": 7.5,
+   "d": 4.4,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": true,
+   "src": "lavae/IMG_9300.mp4",
+   "a": 0.25,
+   "b": 0.35,
+   "vel": 1,
+   "mudo": true
+  },
+  {
+   "i": 2,
+   "tag": "2 · serviço",
+   "tipo": "acao",
+   "t": 11.9,
+   "d": 4.417,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9300.mp4",
+   "a": 0.35,
+   "b": 3.0,
+   "vel": 0.6,
+   "mudo": true
+  },
+  {
+   "i": 3,
+   "tag": "3 · máquina",
+   "tipo": "acao",
+   "t": 16.317,
+   "d": 4.45,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9300.mp4",
+   "a": 3.0,
+   "b": 11.9,
+   "vel": 2.0,
+   "mudo": true
+  },
+  {
+   "i": 4,
+   "tag": "4 · pagamento",
+   "tipo": "acao",
+   "t": 20.767,
+   "d": 5.342,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9300.mp4",
+   "a": 11.9,
+   "b": 15.8,
+   "vel": 0.73,
+   "mudo": true
+  },
+  {
+   "i": 5,
+   "tag": "",
+   "tipo": "acao",
+   "t": 26.109,
+   "d": 5.895,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9300.mp4",
+   "a": 15.8,
+   "b": 27.0,
+   "vel": 1.9,
+   "mudo": true
+  },
+  {
+   "i": 6,
+   "tag": "5 · roupas",
+   "tipo": "acao",
+   "t": 32.004,
+   "d": 1.833,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9301.mp4",
+   "a": 0.0,
+   "b": 1.833,
+   "vel": 1,
+   "mudo": true
+  },
+  {
+   "i": 7,
+   "tag": "",
+   "tipo": "acao",
+   "t": 33.837,
+   "d": 3.625,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9303.mp4",
+   "a": 21.0,
+   "b": 35.5,
+   "vel": 4,
+   "mudo": true
+  },
+  {
+   "i": 8,
+   "tag": "6 · ciclo",
+   "tipo": "acao",
+   "t": 37.462,
+   "d": 3.05,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9304.mp4",
+   "a": 3.5,
+   "b": 9.6,
+   "vel": 2,
+   "mudo": true
+  },
+  {
+   "i": 9,
+   "tag": "",
+   "tipo": "acao",
+   "t": 40.512,
+   "d": 5.2,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9304.mp4",
+   "a": 13.6,
+   "b": 18.8,
+   "vel": 1,
+   "mudo": true
+  },
+  {
+   "i": 10,
+   "tag": "7 · filtro",
+   "tipo": "acao",
+   "t": 45.712,
+   "d": 4.65,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9305.mp4",
+   "a": 0.0,
+   "b": 4.65,
+   "vel": 1,
+   "mudo": true
+  },
+  {
+   "i": 11,
+   "tag": "",
+   "tipo": "acao",
+   "t": 50.362,
+   "d": 2.333,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9306.mp4",
+   "a": 1.5,
+   "b": 15.5,
+   "vel": 6,
+   "mudo": true
+  },
+  {
+   "i": 12,
+   "tag": "espera",
+   "tipo": "cartao",
+   "t": 52.695,
+   "d": 4.3,
+   "texto_cartao": "enquanto lava… relaxa ☕",
+   "palavras": [],
+   "congelar": false
+  },
+  {
+   "i": 13,
+   "tag": "8 · secar",
+   "tipo": "acao",
+   "t": 56.995,
+   "d": 3.0,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": true,
+   "src": "lavae/IMG_9300.mp4",
+   "a": 0.25,
+   "b": 0.35,
+   "vel": 1,
+   "mudo": true
+  },
+  {
+   "i": 14,
+   "tag": "",
+   "tipo": "acao",
+   "t": 59.995,
+   "d": 3.2,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9308.mp4",
+   "a": 0.0,
+   "b": 3.2,
+   "vel": 1,
+   "mudo": true
+  },
+  {
+   "i": 15,
+   "tag": "9 · secadora",
+   "tipo": "acao",
+   "t": 63.195,
+   "d": 4.406,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9308.mp4",
+   "a": 3.2,
+   "b": 10.25,
+   "vel": 1.6,
+   "mudo": true
+  },
+  {
+   "i": 16,
+   "tag": "",
+   "tipo": "acao",
+   "t": 67.601,
+   "d": 2.2,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9309.mp4",
+   "a": 0.0,
+   "b": 2.2,
+   "vel": 1,
+   "mudo": true
+  },
+  {
+   "i": 17,
+   "tag": "fim",
+   "tipo": "broll",
+   "t": 69.801,
+   "d": 2.571,
+   "texto_cartao": "",
+   "palavras": [],
+   "congelar": false,
+   "src": "lavae/IMG_9309.mp4",
+   "a": 2.2,
+   "b": 4.0,
+   "vel": 0.7,
+   "mudo": true
+  },
+  {
+   "i": 18,
+   "tag": "",
+   "tipo": "cartao",
+   "t": 72.373,
+   "d": 4.4,
+   "texto_cartao": "logo Lavaê · lavar ficou fácil!",
+   "palavras": [],
+   "congelar": false
+  }
+ ],
+ "narracoes": [
+  {
+   "src": "lavae/narracao/abertura.wav",
+   "t": 0.3,
+   "d": 7.128,
+   "id": "abertura"
+  },
+  {
+   "src": "lavae/narracao/cpf.wav",
+   "t": 7.7,
+   "d": 4.032,
+   "id": "cpf"
+  },
+  {
+   "src": "lavae/narracao/servico.wav",
+   "t": 12.1,
+   "d": 3.936,
+   "id": "servico"
+  },
+  {
+   "src": "lavae/narracao/maquina.wav",
+   "t": 16.517,
+   "d": 3.96,
+   "id": "maquina"
+  },
+  {
+   "src": "lavae/narracao/pagamento.wav",
+   "t": 20.967,
+   "d": 4.896,
+   "id": "pagamento"
+  },
+  {
+   "src": "lavae/narracao/aprovado.wav",
+   "t": 26.409,
+   "d": 5.376,
+   "id": "aprovado"
+  },
+  {
+   "src": "lavae/narracao/roupas.wav",
+   "t": 32.204,
+   "d": 5.016,
+   "id": "roupas"
+  },
+  {
+   "src": "lavae/narracao/ciclo.wav",
+   "t": 37.662,
+   "d": 7.752,
+   "id": "ciclo"
+  },
+  {
+   "src": "lavae/narracao/filtro.wav",
+   "t": 45.912,
+   "d": 6.048,
+   "id": "filtro"
+  },
+  {
+   "src": "lavae/narracao/espera.wav",
+   "t": 52.945,
+   "d": 3.792,
+   "id": "espera"
+  },
+  {
+   "src": "lavae/narracao/secar.wav",
+   "t": 57.195,
+   "d": 5.856,
+   "id": "secar"
+  },
+  {
+   "src": "lavae/narracao/secadora.wav",
+   "t": 63.395,
+   "d": 5.856,
+   "id": "secadora"
+  },
+  {
+   "src": "lavae/narracao/final.wav",
+   "t": 70.001,
+   "d": 5.856,
+   "id": "final"
+  }
+ ],
+ "narracao_unica": "lavae/narracao/gravada.wav",
+ "legenda": [
+  {
+   "w": "Lavar",
+   "a": 0.403,
+   "b": 0.829,
+   "kw": false
+  },
+  {
+   "w": "e",
+   "a": 0.842,
+   "b": 0.895,
+   "kw": false
+  },
+  {
+   "w": "secar",
+   "a": 0.909,
+   "b": 1.321,
+   "kw": false
+  },
+  {
+   "w": "suas",
+   "a": 1.334,
+   "b": 1.64,
+   "kw": false
+  },
+  {
+   "w": "roupas",
+   "a": 1.653,
+   "b": 2.052,
+   "kw": false
+  },
+  {
+   "w": "na",
+   "a": 2.065,
+   "b": 2.158,
+   "kw": false
+  },
+  {
+   "w": "Lavaê",
+   "a": 2.172,
+   "b": 2.611,
+   "kw": true
+  },
+  {
+   "w": "é",
+   "a": 2.664,
+   "b": 2.73,
+   "kw": false
+  },
+  {
+   "w": "muito",
+   "a": 2.744,
+   "b": 3.103,
+   "kw": true
+  },
+  {
+   "w": "mais",
+   "a": 3.116,
+   "b": 3.369,
+   "kw": true
+  },
+  {
+   "w": "fácil",
+   "a": 3.382,
+   "b": 3.768,
+   "kw": true
+  },
+  {
+   "w": "do",
+   "a": 3.781,
+   "b": 3.887,
+   "kw": false
+  },
+  {
+   "w": "que",
+   "a": 3.901,
+   "b": 3.994,
+   "kw": false
+  },
+  {
+   "w": "parece.",
+   "a": 4.007,
+   "b": 4.632,
+   "kw": false
+  },
+  {
+   "w": "Veja",
+   "a": 4.914,
+   "b": 5.287,
+   "kw": false
+  },
+  {
+   "w": "só",
+   "a": 5.3,
+   "b": 5.526,
+   "kw": false
+  },
+  {
+   "w": "como",
+   "a": 5.539,
+   "b": 5.752,
+   "kw": false
+  },
+  {
+   "w": "é",
+   "a": 5.765,
+   "b": 5.819,
+   "kw": false
+  },
+  {
+   "w": "simples!",
+   "a": 5.832,
+   "b": 6.497,
+   "kw": false
+  },
+  {
+   "w": "Primeiro,",
+   "a": 7.803,
+   "b": 8.309,
+   "kw": false
+  },
+  {
+   "w": "acesse",
+   "a": 8.614,
+   "b": 9.093,
+   "kw": false
+  },
+  {
+   "w": "o",
+   "a": 9.106,
+   "b": 9.173,
+   "kw": false
+  },
+  {
+   "w": "totem",
+   "a": 9.186,
+   "b": 9.598,
+   "kw": false
+  },
+  {
+   "w": "com",
+   "a": 9.612,
+   "b": 9.771,
+   "kw": false
+  },
+  {
+   "w": "o",
+   "a": 9.785,
+   "b": 9.824,
+   "kw": false
+  },
+  {
+   "w": "seu",
+   "a": 9.838,
+   "b": 10.037,
+   "kw": false
+  },
+  {
+   "w": "CPF.",
+   "a": 10.051,
+   "b": 10.795,
+   "kw": true
+  },
+  {
+   "w": "Depois,",
+   "a": 12.203,
+   "b": 12.762,
+   "kw": false
+  },
+  {
+   "w": "escolha",
+   "a": 12.802,
+   "b": 13.2,
+   "kw": false
+  },
+  {
+   "w": "o",
+   "a": 13.214,
+   "b": 13.24,
+   "kw": false
+  },
+  {
+   "w": "serviço:",
+   "a": 13.254,
+   "b": 13.905,
+   "kw": false
+  },
+  {
+   "w": "lavar",
+   "a": 14.078,
+   "b": 14.504,
+   "kw": true
+  },
+  {
+   "w": "ou",
+   "a": 14.517,
+   "b": 14.623,
+   "kw": false
+  },
+  {
+   "w": "secar.",
+   "a": 14.637,
+   "b": 15.115,
+   "kw": true
+  },
+  {
+   "w": "Selecione",
+   "a": 16.62,
+   "b": 17.325,
+   "kw": false
+  },
+  {
+   "w": "uma",
+   "a": 17.338,
+   "b": 17.498,
+   "kw": false
+  },
+  {
+   "w": "máquina",
+   "a": 17.511,
+   "b": 17.977,
+   "kw": true
+  },
+  {
+   "w": "disponível",
+   "a": 17.99,
+   "b": 18.748,
+   "kw": true
+  },
+  {
+   "w": "e",
+   "a": 18.761,
+   "b": 18.828,
+   "kw": false
+  },
+  {
+   "w": "confirme.",
+   "a": 18.841,
+   "b": 19.559,
+   "kw": false
+  },
+  {
+   "w": "Na",
+   "a": 21.07,
+   "b": 21.27,
+   "kw": false
+  },
+  {
+   "w": "hora",
+   "a": 21.283,
+   "b": 21.522,
+   "kw": false
+  },
+  {
+   "w": "de",
+   "a": 21.536,
+   "b": 21.642,
+   "kw": false
+  },
+  {
+   "w": "pagar,",
+   "a": 21.655,
+   "b": 22.134,
+   "kw": false
+  },
+  {
+   "w": "você",
+   "a": 22.187,
+   "b": 22.466,
+   "kw": false
+  },
+  {
+   "w": "escolhe:",
+   "a": 22.48,
+   "b": 23.038,
+   "kw": false
+  },
+  {
+   "w": "débito,",
+   "a": 23.198,
+   "b": 23.73,
+   "kw": true
+  },
+  {
+   "w": "crédito",
+   "a": 23.783,
+   "b": 24.288,
+   "kw": true
+  },
+  {
+   "w": "ou",
+   "a": 24.302,
+   "b": 24.421,
+   "kw": false
+  },
+  {
+   "w": "Pix.",
+   "a": 24.435,
+   "b": 24.94,
+   "kw": true
+  },
+  {
+   "w": "É",
+   "a": 26.512,
+   "b": 26.619,
+   "kw": false
+  },
+  {
+   "w": "só",
+   "a": 26.632,
+   "b": 26.858,
+   "kw": false
+  },
+  {
+   "w": "aproximar",
+   "a": 26.871,
+   "b": 27.456,
+   "kw": true
+  },
+  {
+   "w": "o",
+   "a": 27.47,
+   "b": 27.51,
+   "kw": false
+  },
+  {
+   "w": "cartão",
+   "a": 27.523,
+   "b": 28.015,
+   "kw": false
+  },
+  {
+   "w": "ou",
+   "a": 28.041,
+   "b": 28.121,
+   "kw": false
+  },
+  {
+   "w": "o",
+   "a": 28.135,
+   "b": 28.174,
+   "kw": false
+  },
+  {
+   "w": "celular…",
+   "a": 28.188,
+   "b": 28.759,
+   "kw": false
+  },
+  {
+   "w": "e",
+   "a": 28.959,
+   "b": 29.025,
+   "kw": false
+  },
+  {
+   "w": "pronto:",
+   "a": 29.039,
+   "b": 29.491,
+   "kw": false
+  },
+  {
+   "w": "pagamento",
+   "a": 29.664,
+   "b": 30.182,
+   "kw": true
+  },
+  {
+   "w": "aprovado!",
+   "a": 30.196,
+   "b": 30.861,
+   "kw": true
+  },
+  {
+   "w": "Agora,",
+   "a": 32.307,
+   "b": 32.813,
+   "kw": false
+  },
+  {
+   "w": "abra",
+   "a": 32.932,
+   "b": 33.198,
+   "kw": false
+  },
+  {
+   "w": "a",
+   "a": 33.211,
+   "b": 33.225,
+   "kw": false
+  },
+  {
+   "w": "lavadora",
+   "a": 33.238,
+   "b": 33.85,
+   "kw": false
+  },
+  {
+   "w": "que",
+   "a": 33.863,
+   "b": 33.969,
+   "kw": false
+  },
+  {
+   "w": "você",
+   "a": 33.983,
+   "b": 34.249,
+   "kw": false
+  },
+  {
+   "w": "escolheu",
+   "a": 34.262,
+   "b": 34.847,
+   "kw": false
+  },
+  {
+   "w": "e",
+   "a": 34.86,
+   "b": 34.914,
+   "kw": false
+  },
+  {
+   "w": "coloque",
+   "a": 34.927,
+   "b": 35.406,
+   "kw": false
+  },
+  {
+   "w": "suas",
+   "a": 35.419,
+   "b": 35.698,
+   "kw": false
+  },
+  {
+   "w": "roupas.",
+   "a": 35.711,
+   "b": 36.283,
+   "kw": true
+  },
+  {
+   "w": "Feche",
+   "a": 37.765,
+   "b": 38.151,
+   "kw": false
+  },
+  {
+   "w": "bem",
+   "a": 38.164,
+   "b": 38.35,
+   "kw": false
+  },
+  {
+   "w": "a",
+   "a": 38.364,
+   "b": 38.443,
+   "kw": false
+  },
+  {
+   "w": "porta,",
+   "a": 38.457,
+   "b": 38.949,
+   "kw": true
+  },
+  {
+   "w": "escolha",
+   "a": 39.015,
+   "b": 39.441,
+   "kw": false
+  },
+  {
+   "w": "o",
+   "a": 39.454,
+   "b": 39.494,
+   "kw": false
+  },
+  {
+   "w": "ciclo,",
+   "a": 39.507,
+   "b": 40.026,
+   "kw": false
+  },
+  {
+   "w": "normal",
+   "a": 40.079,
+   "b": 40.544,
+   "kw": true
+  },
+  {
+   "w": "ou",
+   "a": 40.558,
+   "b": 40.651,
+   "kw": false
+  },
+  {
+   "w": "delicadas,",
+   "a": 40.664,
+   "b": 41.382,
+   "kw": true
+  },
+  {
+   "w": "e",
+   "a": 41.475,
+   "b": 41.542,
+   "kw": false
+  },
+  {
+   "w": "aperte",
+   "a": 41.555,
+   "b": 41.994,
+   "kw": false
+  },
+  {
+   "w": "iniciar.",
+   "a": 42.007,
+   "b": 42.552,
+   "kw": true
+  },
+  {
+   "w": "A",
+   "a": 42.835,
+   "b": 42.928,
+   "kw": false
+  },
+  {
+   "w": "lavagem",
+   "a": 42.941,
+   "b": 43.486,
+   "kw": false
+  },
+  {
+   "w": "começa",
+   "a": 43.5,
+   "b": 43.978,
+   "kw": false
+  },
+  {
+   "w": "na",
+   "a": 43.992,
+   "b": 44.151,
+   "kw": false
+  },
+  {
+   "w": "hora.",
+   "a": 44.165,
+   "b": 44.484,
+   "kw": false
+  },
+  {
+   "w": "Enquanto",
+   "a": 46.015,
+   "b": 46.467,
+   "kw": false
+  },
+  {
+   "w": "lava,",
+   "a": 46.481,
+   "b": 46.919,
+   "kw": false
+  },
+  {
+   "w": "já",
+   "a": 47.013,
+   "b": 47.145,
+   "kw": false
+  },
+  {
+   "w": "deixe",
+   "a": 47.159,
+   "b": 47.505,
+   "kw": false
+  },
+  {
+   "w": "a",
+   "a": 47.518,
+   "b": 47.544,
+   "kw": false
+  },
+  {
+   "w": "secadora",
+   "a": 47.558,
+   "b": 48.116,
+   "kw": true
+  },
+  {
+   "w": "pronta:",
+   "a": 48.13,
+   "b": 48.608,
+   "kw": false
+  },
+  {
+   "w": "retire",
+   "a": 48.861,
+   "b": 49.247,
+   "kw": false
+  },
+  {
+   "w": "o",
+   "a": 49.26,
+   "b": 49.313,
+   "kw": false
+  },
+  {
+   "w": "filtro",
+   "a": 49.326,
+   "b": 49.818,
+   "kw": true
+  },
+  {
+   "w": "e",
+   "a": 49.845,
+   "b": 49.885,
+   "kw": false
+  },
+  {
+   "w": "limpe",
+   "a": 49.898,
+   "b": 50.217,
+   "kw": false
+  },
+  {
+   "w": "os",
+   "a": 50.231,
+   "b": 50.337,
+   "kw": false
+  },
+  {
+   "w": "fiapos.",
+   "a": 50.35,
+   "b": 51.028,
+   "kw": false
+  },
+  {
+   "w": "Agora",
+   "a": 53.048,
+   "b": 53.474,
+   "kw": false
+  },
+  {
+   "w": "é",
+   "a": 53.487,
+   "b": 53.527,
+   "kw": false
+  },
+  {
+   "w": "só",
+   "a": 53.54,
+   "b": 53.766,
+   "kw": false
+  },
+  {
+   "w": "relaxar",
+   "a": 53.78,
+   "b": 54.338,
+   "kw": true
+  },
+  {
+   "w": "até",
+   "a": 54.351,
+   "b": 54.564,
+   "kw": false
+  },
+  {
+   "w": "a",
+   "a": 54.577,
+   "b": 54.604,
+   "kw": false
+  },
+  {
+   "w": "lavagem",
+   "a": 54.617,
+   "b": 55.176,
+   "kw": false
+  },
+  {
+   "w": "terminar.",
+   "a": 55.189,
+   "b": 55.801,
+   "kw": false
+  },
+  {
+   "w": "Para",
+   "a": 57.298,
+   "b": 57.498,
+   "kw": false
+  },
+  {
+   "w": "secar,",
+   "a": 57.511,
+   "b": 58.003,
+   "kw": true
+  },
+  {
+   "w": "o",
+   "a": 58.269,
+   "b": 58.322,
+   "kw": false
+  },
+  {
+   "w": "caminho",
+   "a": 58.335,
+   "b": 58.761,
+   "kw": false
+  },
+  {
+   "w": "no",
+   "a": 58.774,
+   "b": 58.907,
+   "kw": false
+  },
+  {
+   "w": "totem",
+   "a": 58.921,
+   "b": 59.319,
+   "kw": false
+  },
+  {
+   "w": "é",
+   "a": 59.333,
+   "b": 59.399,
+   "kw": false
+  },
+  {
+   "w": "o",
+   "a": 59.413,
+   "b": 59.466,
+   "kw": false
+  },
+  {
+   "w": "mesmo:",
+   "a": 59.479,
+   "b": 59.918,
+   "kw": false
+  },
+  {
+   "w": "escolha",
+   "a": 60.171,
+   "b": 60.583,
+   "kw": false
+  },
+  {
+   "w": "secar",
+   "a": 60.596,
+   "b": 61.035,
+   "kw": false
+  },
+  {
+   "w": "e",
+   "a": 61.048,
+   "b": 61.128,
+   "kw": false
+  },
+  {
+   "w": "a",
+   "a": 61.141,
+   "b": 61.208,
+   "kw": false
+  },
+  {
+   "w": "sua",
+   "a": 61.221,
+   "b": 61.434,
+   "kw": false
+  },
+  {
+   "w": "secadora.",
+   "a": 61.447,
+   "b": 62.125,
+   "kw": false
+  },
+  {
+   "w": "Depois,",
+   "a": 63.498,
+   "b": 64.07,
+   "kw": false
+  },
+  {
+   "w": "é",
+   "a": 64.15,
+   "b": 64.203,
+   "kw": false
+  },
+  {
+   "w": "só",
+   "a": 64.216,
+   "b": 64.402,
+   "kw": false
+  },
+  {
+   "w": "passar",
+   "a": 64.416,
+   "b": 64.815,
+   "kw": false
+  },
+  {
+   "w": "as",
+   "a": 64.828,
+   "b": 64.974,
+   "kw": false
+  },
+  {
+   "w": "roupas",
+   "a": 64.988,
+   "b": 65.386,
+   "kw": false
+  },
+  {
+   "w": "para",
+   "a": 65.4,
+   "b": 65.573,
+   "kw": false
+  },
+  {
+   "w": "a",
+   "a": 65.586,
+   "b": 65.613,
+   "kw": false
+  },
+  {
+   "w": "secadora,",
+   "a": 65.626,
+   "b": 66.291,
+   "kw": true
+  },
+  {
+   "w": "escolher",
+   "a": 66.557,
+   "b": 67.009,
+   "kw": false
+  },
+  {
+   "w": "a",
+   "a": 67.022,
+   "b": 67.075,
+   "kw": false
+  },
+  {
+   "w": "temperatura",
+   "a": 67.089,
+   "b": 67.767,
+   "kw": true
+  },
+  {
+   "w": "e",
+   "a": 67.78,
+   "b": 67.833,
+   "kw": false
+  },
+  {
+   "w": "pronto.",
+   "a": 67.847,
+   "b": 68.325,
+   "kw": false
+  },
+  {
+   "w": "Roupa",
+   "a": 70.104,
+   "b": 70.423,
+   "kw": false
+  },
+  {
+   "w": "limpinha",
+   "a": 70.437,
+   "b": 70.982,
+   "kw": true
+  },
+  {
+   "w": "e",
+   "a": 70.995,
+   "b": 71.035,
+   "kw": false
+  },
+  {
+   "w": "sequinha,",
+   "a": 71.048,
+   "b": 71.633,
+   "kw": true
+  },
+  {
+   "w": "sem",
+   "a": 71.66,
+   "b": 71.913,
+   "kw": false
+  },
+  {
+   "w": "complicação.",
+   "a": 71.926,
+   "b": 72.75,
+   "kw": false
+  },
+  {
+   "w": "Lavaê:",
+   "a": 73.033,
+   "b": 73.552,
+   "kw": true
+  },
+  {
+   "w": "lavar",
+   "a": 73.711,
+   "b": 74.07,
+   "kw": false
+  },
+  {
+   "w": "ficou",
+   "a": 74.083,
+   "b": 74.389,
+   "kw": false
+  },
+  {
+   "w": "fácil!",
+   "a": 74.403,
+   "b": 74.934,
+   "kw": false
+  }
+ ]
+}

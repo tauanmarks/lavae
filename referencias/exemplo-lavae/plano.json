@@ -1,0 +1,513 @@
+{
+ "projeto": "lavae",
+ "titulo": "Lavaê: como é fácil lavar e secar",
+ "marca": "espuma",
+ "resumo": "Passo a passo do autoatendimento da Lavaê Lavanderia, com a narração gravada por vocês (alinhada às legendas): acesso com CPF no totem, escolha do serviço e da máquina, pagamento por aproximação, roupas na lavadora, ciclo, limpeza do filtro da secadora, secagem. Áudio original mudo (o totem fala sozinho e há conversa particular); trilha ambiente relaxante. Marca nova 'Espuma' com as cores da loja.",
+ "narracao_pasta": "_narracao",
+ "clipes": [
+  {
+   "clip": "IMG_9300",
+   "uso": "usado",
+   "motivo": "Totem inteiro: boas-vindas, Lavar, máquina, aviso, forma de pagamento, aproximação, aprovado. Sai só o fim da tela verde (27–29,7 s)."
+  },
+  {
+   "clip": "IMG_9301",
+   "uso": "usado",
+   "motivo": "Porta da lavadora aberta (abre a etapa das roupas)."
+  },
+  {
+   "clip": "IMG_9302",
+   "uso": "usado",
+   "motivo": "Cesto ao lado da lavadora aberta: abertura em câmera lenta."
+  },
+  {
+   "clip": "IMG_9303",
+   "uso": "parcial",
+   "motivo": "Colocando as roupas: fica 21–35,5 s acelerado 4x. Saem o começo (câmera, conversa) e o fim com o comentário sobre peças íntimas."
+  },
+  {
+   "clip": "IMG_9304",
+   "uso": "parcial",
+   "motivo": "Porta fechando (3,5–9,6 s, 2x) e botões NORMAL/INICIAR (13,6–18,8 s)."
+  },
+  {
+   "clip": "IMG_9305",
+   "uso": "usado",
+   "motivo": "Retirando o filtro da secadora."
+  },
+  {
+   "clip": "IMG_9306",
+   "uso": "parcial",
+   "motivo": "Limpando os fiapos, acelerado 6x."
+  },
+  {
+   "clip": "IMG_9307",
+   "uso": "fora",
+   "motivo": "0,5 s borrado (gravação acidental)."
+  },
+  {
+   "clip": "IMG_9308",
+   "uso": "usado",
+   "motivo": "Passando as roupas da lavadora para a secadora (37 min depois)."
+  },
+  {
+   "clip": "IMG_9309",
+   "uso": "usado",
+   "motivo": "Últimas peças na secadora e plano final da secadora carregada."
+  }
+ ],
+ "planos": [
+  {
+   "clip": "IMG_9302",
+   "a": 0.0,
+   "b": 3.9,
+   "velocidade": 0.52,
+   "tipo": "broll",
+   "tag": "abertura",
+   "narracao": {
+    "id": "abertura",
+    "em": 0.3,
+    "texto": "Lavar e secar suas roupas na Lavaê é muito mais fácil do que parece. Veja só como é simples!"
+   },
+   "legenda": "Lavar e secar suas roupas na *Lavaê* / é *muito mais fácil* do que parece / Veja só como é simples!",
+   "edicao": [
+    "Câmera lenta (0,52x) do cesto ao lado da lavadora aberta",
+    "Título: 'LAVAR E SECAR NA LAVAÊ' + 'em poucos passos' com bolhas subindo",
+    "Barra de passos no topo aparece no fim"
+   ],
+   "som": [
+    "Trilha relaxante entra com fade de 1 s",
+    "Bolhas na entrada do título"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9300",
+   "a": 0.25,
+   "b": 0.35,
+   "congelar": true,
+   "duracao": 4.4,
+   "tipo": "acao",
+   "tag": "1 · CPF",
+   "narracao": {
+    "id": "cpf",
+    "em": 0.2,
+    "texto": "Primeiro, acesse o totem com o seu CPF."
+   },
+   "legenda": "Primeiro, acesse o totem / com o seu *CPF*",
+   "edicao": [
+    "Quadro congelado da tela de boas-vindas do totem com zoom suave (100→118%)",
+    "DESFOCAR o nome na tela (Bem vindo ...)",
+    "Selo do passo: 1 Acesse com seu CPF"
+   ],
+   "som": [
+    "Bolha no selo"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9300",
+   "a": 0.35,
+   "b": 3.0,
+   "velocidade": 0.6,
+   "tipo": "acao",
+   "tag": "2 · serviço",
+   "narracao": {
+    "id": "servico",
+    "em": 0.2,
+    "texto": "Depois, escolha o serviço: lavar ou secar."
+   },
+   "legenda": "Depois, escolha o serviço: / *lavar* ou *secar*",
+   "edicao": [
+    "Câmera lenta (0,6x): o dedo toca em Lavar",
+    "Nome continua desfocado",
+    "Selo 2 Escolha o serviço; círculos Azul Céu em Lavar e Secar"
+   ],
+   "som": [
+    "Clique suave no toque"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9300",
+   "a": 3.0,
+   "b": 11.9,
+   "velocidade": 2.0,
+   "tipo": "acao",
+   "tag": "3 · máquina",
+   "narracao": {
+    "id": "maquina",
+    "em": 0.2,
+    "texto": "Selecione uma máquina disponível e confirme."
+   },
+   "legenda": "Selecione uma *máquina disponível* / e confirme",
+   "edicao": [
+    "Acelerado 2x: escolhe LAVA-01 e toca em Continuar no aviso",
+    "Zoom 130% na tela",
+    "Selo 3 Escolha a máquina"
+   ],
+   "som": [
+    "Clique suave em LAVA-01 e em Continuar"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9300",
+   "a": 11.9,
+   "b": 15.8,
+   "velocidade": 0.73,
+   "tipo": "acao",
+   "tag": "4 · pagamento",
+   "narracao": {
+    "id": "pagamento",
+    "em": 0.2,
+    "texto": "Na hora de pagar, você escolhe: débito, crédito ou Pix."
+   },
+   "legenda": "Na hora de pagar, você escolhe: / *débito*, *crédito* ou *Pix*",
+   "edicao": [
+    "Leve câmera lenta (0,73x): tela com Débito / Crédito à vista / Pix",
+    "Destaque nos 3 botões conforme a narração cita cada um",
+    "Selo 4 Pagamento"
+   ],
+   "som": [
+    "Clique suave em Crédito"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9300",
+   "a": 15.8,
+   "b": 27.0,
+   "velocidade": 1.9,
+   "tipo": "acao",
+   "narracao": {
+    "id": "aprovado",
+    "em": 0.3,
+    "texto": "É só aproximar o cartão ou o celular… e pronto: pagamento aprovado!"
+   },
+   "legenda": "É só *aproximar* o cartão ou o celular… / e pronto: *pagamento aprovado!*",
+   "edicao": [
+    "Acelerado 1,9x: aproxima o celular, processando, tela verde",
+    "A tela verde chega junto com 'pagamento aprovado'",
+    "Check Verde Totem grande sobre a tela verde"
+   ],
+   "som": [
+    "Ding suave no aprovado"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9301",
+   "a": 0.0,
+   "b": 1.833,
+   "velocidade": 1,
+   "tipo": "acao",
+   "tag": "5 · roupas",
+   "narracao": {
+    "id": "roupas",
+    "em": 0.2,
+    "texto": "Agora, abra a lavadora que você escolheu e coloque suas roupas."
+   },
+   "legenda": "Agora, abra a lavadora que você escolheu / e coloque suas *roupas*",
+   "edicao": [
+    "Porta da lavadora aberta",
+    "Selo 5 Coloque as roupas"
+   ],
+   "som": [
+    "Whoosh macio na troca de etapa"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9303",
+   "a": 21.0,
+   "b": 35.5,
+   "velocidade": 4,
+   "tipo": "acao",
+   "edicao": [
+    "Acelerado 4x: roupas entrando na lavadora (moletom cinza e toalha rosa)"
+   ],
+   "som": [],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9304",
+   "a": 3.5,
+   "b": 9.6,
+   "velocidade": 2,
+   "tipo": "acao",
+   "tag": "6 · ciclo",
+   "narracao": {
+    "id": "ciclo",
+    "em": 0.2,
+    "texto": "Feche bem a porta, escolha o ciclo, normal ou delicadas, e aperte iniciar. A lavagem começa na hora."
+   },
+   "legenda": "Feche bem a *porta* / escolha o ciclo, *normal* ou *delicadas* / e aperte *iniciar* / A lavagem começa na hora",
+   "edicao": [
+    "Acelerado 2x: últimas peças e a porta fechando",
+    "Selo 6 Escolha o ciclo"
+   ],
+   "som": [
+    "Clique suave na porta"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9304",
+   "a": 13.6,
+   "b": 18.8,
+   "velocidade": 1,
+   "tipo": "acao",
+   "edicao": [
+    "Dedo apertando NORMAL e INICIAR no painel da lavadora",
+    "Zoom 135% no painel com rótulos NORMAL · DELICADAS · INICIAR"
+   ],
+   "som": [
+    "Clique suave em cada botão"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9305",
+   "a": 0.0,
+   "b": 4.65,
+   "velocidade": 1,
+   "tipo": "acao",
+   "tag": "7 · filtro",
+   "narracao": {
+    "id": "filtro",
+    "em": 0.2,
+    "texto": "Enquanto lava, já deixe a secadora pronta: retire o filtro e limpe os fiapos."
+   },
+   "legenda": "Enquanto lava, já deixe a *secadora* pronta: / retire o *filtro* / e limpe os fiapos",
+   "edicao": [
+    "Tirando o filtro de fiapos da secadora",
+    "Selo 7 Limpe o filtro"
+   ],
+   "som": [
+    "Whoosh macio"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9306",
+   "a": 1.5,
+   "b": 15.5,
+   "velocidade": 6,
+   "tipo": "acao",
+   "edicao": [
+    "Acelerado 6x: limpando os fiapos do filtro no lixo"
+   ],
+   "som": [],
+   "mudo": true
+  },
+  {
+   "tipo": "cartao",
+   "duracao": 4.3,
+   "tag": "espera",
+   "texto_cartao": "enquanto lava… relaxa ☕",
+   "narracao": {
+    "id": "espera",
+    "em": 0.25,
+    "texto": "Agora é só relaxar até a lavagem terminar."
+   },
+   "legenda": "Agora é só *relaxar* / até a lavagem terminar",
+   "edicao": [
+    "Cartão Azul Lavaê com bolhas subindo e relógio girando suave",
+    "Texto 'enquanto lava… relaxa'"
+   ],
+   "som": [
+    "Trilha sobe um pouco no fim"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9300",
+   "a": 0.25,
+   "b": 0.35,
+   "congelar": true,
+   "duracao": 3.0,
+   "reuso": true,
+   "tipo": "acao",
+   "tag": "8 · secar",
+   "narracao": {
+    "id": "secar",
+    "em": 0.2,
+    "texto": "Para secar, o caminho no totem é o mesmo: escolha secar e a sua secadora."
+   },
+   "legenda": "Para secar, o caminho no totem é o mesmo: / escolha *secar* e a sua secadora",
+   "edicao": [
+    "Volta à tela de boas-vindas congelada, agora com zoom no botão vermelho SECAR (reuso intencional da imagem)",
+    "Nome desfocado",
+    "Selo 8 Para secar"
+   ],
+   "som": [
+    "Bolha"
+   ],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9308",
+   "a": 0.0,
+   "b": 3.2,
+   "velocidade": 1,
+   "tipo": "acao",
+   "edicao": [
+    "Lavadora com a SECADORA 1 em cima: ela tirando as roupas lavadas"
+   ],
+   "som": [],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9308",
+   "a": 3.2,
+   "b": 10.25,
+   "velocidade": 1.6,
+   "tipo": "acao",
+   "tag": "9 · secadora",
+   "narracao": {
+    "id": "secadora",
+    "em": 0.2,
+    "texto": "Depois, é só passar as roupas para a secadora, escolher a temperatura e pronto."
+   },
+   "legenda": "Depois, é só passar as roupas para a *secadora* / escolher a *temperatura* e pronto",
+   "edicao": [
+    "Acelerado 1,6x: roupas passando da lavadora para a secadora",
+    "Selo 9 Seque"
+   ],
+   "som": [],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9309",
+   "a": 0.0,
+   "b": 2.2,
+   "velocidade": 1,
+   "tipo": "acao",
+   "edicao": [
+    "Últimas peças entrando na secadora; etiqueta alta · média · baixa temperatura"
+   ],
+   "som": [],
+   "mudo": true
+  },
+  {
+   "clip": "IMG_9309",
+   "a": 2.2,
+   "b": 4.0,
+   "velocidade": 0.7,
+   "tipo": "broll",
+   "tag": "fim",
+   "narracao": {
+    "id": "final",
+    "em": 0.2,
+    "texto": "Roupa limpinha e sequinha, sem complicação. Lavaê: lavar ficou fácil!"
+   },
+   "legenda": "Roupa *limpinha e sequinha* / sem complicação / *Lavaê*: lavar ficou fácil!",
+   "edicao": [
+    "Câmera lenta (0,7x) da secadora carregada, placa SECADORA 1 (último segundo do clipe cortado)",
+    "Check em todos os passos da barra"
+   ],
+   "som": [
+    "Ding suave"
+   ],
+   "mudo": true
+  },
+  {
+   "tipo": "cartao",
+   "duracao": 4.4,
+   "texto_cartao": "logo Lavaê · lavar ficou fácil!",
+   "edicao": [
+    "Encerramento com o LOGO da Lavaê (referencias/lavae/logo-lavae.png) sobre Névoa, pílula verde 'lavar ficou fácil!', bolhas",
+    "Trilha termina em fade"
+   ],
+   "som": [
+    "Ding suave"
+   ],
+   "mudo": true
+  }
+ ],
+ "descartados": [
+  {
+   "clip": "IMG_9300",
+   "a": 27.0,
+   "b": 29.75,
+   "texto": "(tela verde parada)",
+   "motivo": "o aprovado já apareceu; o resto é espera"
+  },
+  {
+   "clip": "IMG_9303",
+   "a": 0.0,
+   "b": 21.0,
+   "texto": "As calcinhas não vão aparecer… Você tá gravando? (início da carga)",
+   "motivo": "conversa particular e câmera se ajeitando; a carga aparece depois, acelerada"
+  },
+  {
+   "clip": "IMG_9303",
+   "a": 35.5,
+   "b": 38.75,
+   "texto": "As calcinhas também, né?",
+   "motivo": "privacidade (peças íntimas)"
+  },
+  {
+   "clip": "IMG_9304",
+   "a": 0.0,
+   "b": 3.5,
+   "texto": "(roupas entrando)",
+   "motivo": "mesma ação do 9303, que já aparece"
+  },
+  {
+   "clip": "IMG_9304",
+   "a": 9.6,
+   "b": 13.6,
+   "texto": "(câmera indo até o painel)",
+   "motivo": "movimento de transição"
+  },
+  {
+   "clip": "IMG_9304",
+   "a": 18.8,
+   "b": 20.44,
+   "texto": "(fim do clipe)",
+   "motivo": "depois do iniciar"
+  },
+  {
+   "clip": "IMG_9306",
+   "a": 0.0,
+   "b": 1.5,
+   "texto": "(levando o filtro ao lixo)",
+   "motivo": "começo da limpeza"
+  },
+  {
+   "clip": "IMG_9306",
+   "a": 15.5,
+   "b": 16.23,
+   "texto": "(fim)",
+   "motivo": "fim do clipe"
+  },
+  {
+   "clip": "IMG_9307",
+   "a": 0.0,
+   "b": 0.52,
+   "texto": "(borrado)",
+   "motivo": "gravação acidental"
+  },
+  {
+   "clip": "IMG_9309",
+   "a": 4.0,
+   "b": 5.018,
+   "texto": "(último segundo)",
+   "motivo": "cortado a pedido"
+  }
+ ],
+ "musica": {
+  "arquivo": "ferramentas/sons/espuma/trilha.wav",
+  "faixa": "Trilha ambiente relaxante da marca Espuma (pads, sinos leves, água), 72 BPM, sintetizada",
+  "bpm": 72,
+  "volume_sob_fala_db": -20,
+  "notas": "Sobe para −12 dB nos respiros sem narração e no encerramento; fade-in de 1 s e fade-out de 2 s."
+ },
+ "pendencias": [
+  "Narração: a gravação de vocês substitui a voz neural; legendas mantidas como estavam.",
+  "Selos de velocidade (x2, x4, x6) removidos; logo no encerramento; último segundo do 9309 cortado."
+ ],
+ "narracao_gravada": "_narracao_gravada/narracao_alinhada.wav"
+}

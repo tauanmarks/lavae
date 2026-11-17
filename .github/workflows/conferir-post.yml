@@ -1,0 +1,27 @@
+# Confere cada pull request de post antes do merge: regras do Instagram e da marca (não publica nada).
+name: Conferir post
+
+on:
+  pull_request:
+    paths: ["automacao-instagram/ciclos/**"]
+
+jobs:
+  conferir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install pillow
+
+      - name: Conferir ciclos alterados
+        run: |
+          ciclos=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD" -- automacao-instagram/ciclos \
+                   | cut -d/ -f3 | sort -u)
+          if [ -z "$ciclos" ]; then echo "Nenhum ciclo alterado."; exit 0; fi
+          python automacao-instagram/conferir_ciclo.py $ciclos

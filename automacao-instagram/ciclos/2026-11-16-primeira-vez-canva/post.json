@@ -1,0 +1,84 @@
+{
+ "ciclo": "2026-11-16-primeira-vez-canva",
+ "conta": "lavae",
+ "formato": "carrossel",
+ "marca": "espuma",
+ "pauta": "Primeira vez na lavanderia self-service: os 4 passos da Lavaê + dica da etiqueta",
+ "fontes_fatos": [
+  "Passos, formas de pagamento, ciclos e filtro da secadora: roteiro do vídeo aprovado (referencias/exemplo-lavae/roteiro.json)",
+  "Barras sob o símbolo de lavagem: pesquisa.md",
+  "Fotos: quadros dos clipes brutos IMG_9300/9302/9304/9305 (Editor_Variado/videos-brutos/lavae); quadro com nome de cliente descartado",
+  "Preços, pagamento em todas as máquinas e endereço: informados pelo usuário em 16/11/2026"
+ ],
+ "slides": [
+  {
+   "tipo": "capa",
+   "titulo": "Primeira vez na lavanderia?",
+   "destaque": "sem complicação",
+   "pilula": "4 passos"
+  },
+  {
+   "tipo": "passo",
+   "n": 1,
+   "titulo": "Acesse o totem com o seu CPF",
+   "texto": "Depois, escolha o serviço: lavar ou secar.",
+   "etiqueta": "lavar · secar"
+  },
+  {
+   "tipo": "passo",
+   "n": 2,
+   "titulo": "Escolha a máquina e pague",
+   "texto": "Selecione uma máquina disponível, confirme e aproxime o cartão ou o celular.",
+   "etiqueta": "débito · crédito · Pix",
+   "precos": "seg a qui: R$ 12,90 · sex a dom: R$ 14,90"
+  },
+  {
+   "tipo": "passo",
+   "n": 3,
+   "titulo": "Coloque as roupas e inicie",
+   "texto": "Feche bem a porta, escolha o ciclo e aperte iniciar. A lavagem começa na hora.",
+   "etiqueta": "normal · delicadas"
+  },
+  {
+   "tipo": "passo",
+   "n": 4,
+   "titulo": "Hora de secar",
+   "texto": "No totem, escolha secar e a sua secadora. Limpe o filtro de fiapos, passe as roupas e escolha a temperatura.",
+   "etiqueta": "filtro limpo seca melhor"
+  },
+  {
+   "tipo": "dica",
+   "titulo": "Normal ou delicadas?",
+   "texto": "Olhe a etiqueta da roupa, embaixo do símbolo da bacia:",
+   "itens": [
+    "sem barra → normal",
+    "1 ou 2 barras → delicadas"
+   ]
+  },
+  {
+   "tipo": "final",
+   "frase": "lavar ficou fácil!",
+   "chamada": "Salve para a sua primeira vez 💙",
+   "rodape": "📍 Edifício Dom Center · Rua do Aririzal / Av. São Luís Rei de França"
+  }
+ ],
+ "legenda": "Primeira vez numa lavanderia self-service? Na Lavaê é assim:\n\n1️⃣ Acesse o totem com o seu CPF e escolha lavar ou secar\n2️⃣ Escolha a máquina e pague no débito, crédito ou Pix (em todas as máquinas)\n3️⃣ Coloque as roupas, escolha o ciclo e aperte iniciar\n4️⃣ Para secar: mesmo caminho no totem, filtro limpo e temperatura escolhida\n\n💰 Segunda a quinta: R$ 12,90 · Sexta a domingo: R$ 14,90\n📍 Edifício Dom Center – Rua do Aririzal / Av. São Luís Rei de França\n\nDica: barrinhas embaixo da bacia na etiqueta = ciclo delicadas.\n\nSalve este post e manda para quem ainda não conhece 💙",
+ "hashtags": [
+  "#lavanderia",
+  "#lavanderiaselfservice",
+  "#lavae",
+  "#roupalimpa",
+  "#dicasdelavagem"
+ ],
+ "rotulo_ia": false,
+ "agendar_para": null,
+ "pendencias": [
+  "Horário de funcionamento não entrou (não informado). Quer incluir no último slide ou na legenda?"
+ ],
+ "origem": "canva",
+ "canva": {
+  "design_4x5": "DAHbIY7_i1Q",
+  "design_3x4_original": "DAHbIe9YXek",
+  "editar": "https://www.canva.com/d/5dRYWGsqvqL7R4g"
+ }
+}
