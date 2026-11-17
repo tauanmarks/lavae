@@ -1,0 +1,68 @@
+# Story diário: todo dia às 9h de São Luís publica a imagem aprovada do rodízio (automacao-instagram/stories).
+# O GitHub roda às 8h40 (o agendamento dele costuma atrasar alguns minutos) e o script espera até 9h00.
+# Pausar: Settings → Secrets and variables → Actions → Variables → STORIES_ATIVO = nao.
+# Testar à mão: Actions → "Story diário" → Run workflow (modo simular não publica nada).
+name: Story diário
+
+on:
+  schedule:
+    - cron: "40 11 * * *"   # 11h40 UTC = 8h40 em São Luís (UTC-3)
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "simular (não publica) ou publicar (publica agora o story de hoje)"
+        type: choice
+        options: [simular, publicar]
+        default: simular
+
+concurrency:
+  group: story-diario
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  story:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Publicar story do dia
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_API_VERSAO: ${{ vars.IG_API_VERSAO }}
+          IG_API_HOST: ${{ vars.IG_API_HOST }}
+          STORIES_ATIVO: ${{ vars.STORIES_ATIVO }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python automacao-instagram/publicar_story.py --esperar --de-verdade
+          elif [ "${{ github.event.inputs.modo }}" = "publicar" ]; then
+            python automacao-instagram/publicar_story.py --de-verdade
+          else
+            python automacao-instagram/publicar_story.py
+          fi
+
+      - name: Guardar registro do story
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          f=automacao-instagram/stories/publicados.json
+          [ -f "$f" ] && git add "$f"
+          if ! git diff --cached --quiet; then
+            git commit -m "Registro do story diário [publicado]"
+            for tentativa in 1 2 3 4 5; do
+              git pull --rebase -X theirs origin main && git push && exit 0
+              git rebase --abort 2>/dev/null || true
+              sleep $((tentativa * 5))
+            done
+            echo "::error::Story publicado, mas não consegui gravar o registro."
+            exit 1
+          fi

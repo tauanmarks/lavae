@@ -82,3 +82,21 @@ URLs saem como `raw.githubusercontent.com/<repo>/<commit>/.../slides/slide-01.jp
 - Vídeos automáticos sem filmagem nova ficam limitados a animação + narração.
 - Limite da API: dezenas de posts por dia por conta (Meta cita 50 em parte da documentação) — longe do que vamos usar.
 - O computador precisa estar ligado no horário da tarefa agendada (o render roda aqui).
+
+## Story diário (9h)
+
+Todo dia às 9h (São Luís) sai um story 9:16 com "<Dia> também é dia de <frase>", o preço do dia, endereço e horário.
+
+| Peça | O que é |
+|---|---|
+| Canva (design em `stories/modelo.json` → `canva`) | A arte: 28 páginas, uma por story, na ordem segunda-1..4, terça-1..4 … domingo-4. Só ilustração por enquanto (sem fotos); quando houver o banco de fotos da loja, trocar no Canva |
+| `stories/modelo.json` | Textos, preços por dia, 4 frases por dia (trocam a cada semana), datas para `pular` |
+| `criar_stories.py --de-pasta PASTA` | Importa os JPG exportados do Canva (1080×1920) para `stories/imagens/<dia>-<n>.jpg` e gera `previa.jpg` e `aprovacao.html` (com o calendário) |
+| `aprovar_stories.py --por NOME` | Grava a aprovação (impressão digital de cada imagem). Só depois do "aprovado" |
+| `publicar_story.py` | Escolhe o story do dia e publica (simulação por padrão) |
+| `.github/workflows/story-diario.yml` | Roda às 8h40, espera até 9h00 e publica. Registro em `stories/publicados.json` |
+
+- Mudou frase/preço: edite no Canva, exporte JPG de novo e importe. Imagem refeita perde a aprovação: o robô recusa e o GitHub manda e-mail de falha.
+- Pausar sem mexer no código: variável `STORIES_ATIVO` = `nao` no GitHub (Settings → Secrets and variables → Actions → Variables).
+- Feriado/fechado: data em `"pular"` no `modelo.json`.
+- A API não publica figurinhas (link, enquete, local) no story.

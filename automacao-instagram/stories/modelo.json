@@ -1,0 +1,106 @@
+{
+ "sobre": "Story diário das 9h. Arte feita no Canva (design abaixo): uma página por story, na ordem segunda-1..4, terça-1..4 ... domingo-4. Cada dia tem 4 frases que se revezam por semana. Mudou frase ou preço → edite no Canva, exporte JPG e rode criar_stories.py --de-pasta <pasta>; depois nova aprovação.",
+ "inicio_rodizio": "2026-11-16",
+ "fuso": "America/Fortaleza",
+ "hora": "09:00",
+ "textos": {
+  "prefixo": "também é dia de",
+  "chamada": "Hoje, cada lavagem ou secagem sai por",
+  "endereco": [
+   "Edifício Dom Center",
+   "Rua do Aririzal / Av. São Luís Rei de França"
+  ],
+  "horario": "Todos os dias, das 6h30 à meia-noite"
+ },
+ "dias": [
+  {
+   "id": "segunda",
+   "nome": "Segunda-feira",
+   "preco": "12,90",
+   "frases": [
+    "começar a semana leve",
+    "deixar a roupa acumulada para trás",
+    "ganhar tempo para você",
+    "roupa limpa sem esforço"
+   ]
+  },
+  {
+   "id": "terca",
+   "nome": "Terça-feira",
+   "preco": "12,90",
+   "frases": [
+    "lençol com cheirinho de limpo",
+    "esquecer o varal",
+    "cuidar de você sem complicação",
+    "toalha macia e sequinha"
+   ]
+  },
+  {
+   "id": "quarta",
+   "nome": "Quarta-feira",
+   "preco": "12,90",
+   "frases": [
+    "chegar no meio da semana com tudo em dia",
+    "casa em ordem, cabeça leve",
+    "trocar o tanque por um descanso",
+    "mais tempo para o que importa"
+   ]
+  },
+  {
+   "id": "quinta",
+   "nome": "Quinta-feira",
+   "preco": "12,90",
+   "frases": [
+    "adiantar a roupa do fim de semana",
+    "roupa seca, faça chuva ou faça sol",
+    "uma tarefa a menos na lista",
+    "vestir aquela peça favorita limpinha"
+   ]
+  },
+  {
+   "id": "sexta",
+   "nome": "Sexta-feira",
+   "preco": "14,90",
+   "frases": [
+    "começar o fim de semana sem roupa acumulada",
+    "deixar o sábado livre",
+    "roupa pronta para o passeio",
+    "sair do trabalho e resolver tudo de uma vez"
+   ]
+  },
+  {
+   "id": "sabado",
+   "nome": "Sábado",
+   "preco": "14,90",
+   "frases": [
+    "lavar tudo de uma vez e curtir o resto do dia",
+    "cama arrumada com lençol fresquinho",
+    "aproveitar o fim de semana com roupa limpa",
+    "renovar as toalhas da casa"
+   ]
+  },
+  {
+   "id": "domingo",
+   "nome": "Domingo",
+   "preco": "14,90",
+   "frases": [
+    "começar a semana com tudo pronto",
+    "descansar com lençol cheiroso",
+    "deixar a segunda-feira mais leve",
+    "um cuidado com você e com a sua casa"
+   ]
+  }
+ ],
+ "pendencias": [],
+ "pular": [],
+ "canva": {
+  "design_id": "DAHbLmwLd-w",
+  "titulo": "Story promocional de terça-feira da Lavaê",
+  "sem_fotos": "por enquanto só ilustrações; quando houver banco de fotos da loja, trocar as ilustrações no Canva"
+ },
+ "notas": [
+  "Preço por serviço (lavar OU secar), confirmado em 17/11/2026.",
+  "Aberto todos os dias, inclusive domingos e feriados, das 6h30 à meia-noite (confirmado em 17/11/2026).",
+  "Dia excepcional sem story (ex.: loja fechada): coloque a data em \"pular\"."
+ ]
+}
