@@ -1,0 +1,37 @@
+{
+ "ciclo": "2026-11-17-stories-passo-a-passo",
+ "conta": "@lavae",
+ "formato": "stories",
+ "pauta": "Sequência de stories do passo a passo (chama para o carrossel do feed)",
+ "origem": "canva",
+ "fonte_imagens": "ciclos/2026-11-16-primeira-vez-canva/slides (arte do Canva), centralizada em 1080×1920 com fundo desfocado e etiqueta 'Passo a passo n/7'",
+ "post_relacionado": "https://www.instagram.com/p/Df2P2QNk7Tz/",
+ "legenda": "",
+ "hashtags": [],
+ "slides": [
+  {
+   "origem": "slide-01 do carrossel"
+  },
+  {
+   "origem": "slide-02 do carrossel"
+  },
+  {
+   "origem": "slide-03 do carrossel"
+  },
+  {
+   "origem": "slide-04 do carrossel"
+  },
+  {
+   "origem": "slide-05 do carrossel"
+  },
+  {
+   "origem": "slide-06 do carrossel"
+  },
+  {
+   "origem": "slide-07 do carrossel"
+  }
+ ],
+ "pendencias": [
+  "O slide 1 diz 'arrasta →' (gesto do carrossel); no story a pessoa toca para avançar."
+ ]
+}

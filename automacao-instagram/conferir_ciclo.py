@@ -32,7 +32,10 @@ def conferir(nome: str) -> list[str]:
             w, h = im.size
             if im.format != "JPEG":
                 erros.append(f"{f.name}: {im.format} (a API só aceita JPEG)")
-            if not 0.8 <= w / h <= 1.91:
+            if post.get("formato") == "stories":
+                if (w, h) != (1080, 1920):
+                    erros.append(f"{f.name}: {w}×{h} (story precisa 1080×1920)")
+            elif not 0.8 <= w / h <= 1.91:
                 erros.append(f"{f.name}: {w}×{h} fora de 4:5 a 1,91:1")
         resumo = f"{len(fs)} slides"
     if not (ciclo / "previa.jpg").exists():

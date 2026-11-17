@@ -170,6 +170,41 @@ def publicar_reel(ciclo, post, reg, pub, de_verdade):
     print(f"PUBLICADO: {link or mid}")
 
 
+def publicar_stories(ciclo, post, reg, pub, imgs, de_verdade):
+    """Sequência de stories (imagens 9:16), publicadas uma a uma na ordem dos arquivos.
+    Se cair no meio, o publicacao.json guarda os ids já publicados e uma nova execução continua de onde parou."""
+    cfg = carregar_config()
+    base = cfg["IG_BASE_URL"].rstrip("/") or "https://<IG_BASE_URL>"
+    urls = [f"{base}/{ciclo.name}/slides/{p.name}" for p in imgs]
+    feitos = json.loads(pub.read_text(encoding="utf-8")).get("ids", []) if pub.exists() else []
+    faltando = [k for k in ("IG_USER_ID", "IG_ACCESS_TOKEN", "IG_BASE_URL") if not cfg[k]]
+    if not de_verdade:
+        print(f"SIMULAÇÃO — {ciclo.name}: sequência de {len(urls)} stories, aprovada por {reg['por']} em {reg['em']}"
+              + (f" ({len(feitos)} já publicados)" if feitos else ""))
+        for u in urls[len(feitos):]:
+            print(f"  POST /{{IG_USER_ID}}/media  media_type=STORIES  image_url={u}  →  media_publish")
+        print("Configuração faltando para publicar: " + (", ".join(faltando) if faltando else "nada"))
+        return
+    if faltando:
+        raise SystemExit("ERRO: falta configurar " + ", ".join(faltando))
+    ruins = [x for x in (url_publica_ok(u) for u in urls[len(feitos):]) if x]
+    if ruins:
+        raise SystemExit("ERRO: imagens não estão acessíveis publicamente como JPEG:\n  " + "\n  ".join(ruins))
+    uid = cfg["IG_USER_ID"]
+    for i, u in enumerate(urls[len(feitos):], len(feitos) + 1):
+        cont = chamar("POST", f"{uid}/media", cfg, {"media_type": "STORIES", "image_url": u})["id"]
+        esperar_pronto(cont, cfg, limite=180)
+        feitos.append(chamar("POST", f"{uid}/media_publish", cfg, {"creation_id": cont})["id"])
+        pub.write_text(json.dumps({"ids": feitos, "formato": "stories", "total": len(urls),
+                                   "impressao_digital": reg["impressao_digital"]}, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"  story {i}/{len(urls)} publicado ({feitos[-1]})", flush=True)
+        time.sleep(3)  # mantém a ordem da sequência
+    pub.write_text(json.dumps({"id": feitos[-1], "ids": feitos, "formato": "stories", "total": len(urls),
+                               "em": datetime.now().isoformat(timespec="seconds"),
+                               "impressao_digital": reg["impressao_digital"]}, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"PUBLICADO: sequência de {len(feitos)} stories")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("ciclo")
@@ -191,6 +226,8 @@ def main():
         raise SystemExit("RECUSADO: este ciclo já foi publicado (publicacao.json).")
     if eh_reel(post):
         return publicar_reel(ciclo, post, reg, pub, a.de_verdade)
+    if post.get("formato") == "stories":
+        return publicar_stories(ciclo, post, reg, pub, imgs, a.de_verdade)
     legenda = texto_final(post)
     carrossel = len(imgs) > 1
 
