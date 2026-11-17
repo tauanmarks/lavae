@@ -38,7 +38,7 @@ def carregar_config() -> dict:
                 k, v = linha.split("=", 1)
                 os.environ.setdefault(k.strip(), v.strip().strip('"'))
     return {k: os.environ.get(k, "") for k in ("IG_USER_ID", "IG_ACCESS_TOKEN", "IG_BASE_URL")} | {
-        "IG_API_VERSAO": os.environ.get("IG_API_VERSAO", "v23.0")}
+        "IG_API_VERSAO": os.environ.get("IG_API_VERSAO") or "v23.0"}  # vazio no Actions quando a variável não existe
 
 
 def chamar(metodo: str, caminho: str, cfg: dict, campos: dict) -> dict:

@@ -1,0 +1,20 @@
+# Testa o token do Instagram sem publicar nada. Actions → "Testar acesso ao Instagram" → Run workflow.
+name: Testar acesso ao Instagram
+
+on:
+  workflow_dispatch:
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Testar token e conta
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_API_VERSAO: ${{ vars.IG_API_VERSAO }}
+        run: python automacao-instagram/testar_acesso.py
