@@ -1,0 +1,41 @@
+{
+ "ciclo": "2026-11-17-reel-passo-a-passo",
+ "conta": "lavae",
+ "formato": "reel",
+ "marca": "espuma",
+ "pauta": "Reels: passo a passo completo para lavar e secar na Lavaê (vídeo aprovado lavae-v2)",
+ "origem_video": "Editor_Variado/videos-prontos/lavae-v2.mp4 (storyboard aprovado em 16/11/2026)",
+ "video": "video.mp4",
+ "capa_ms": 2500,
+ "slides": [],
+ "fontes_fatos": [
+  "Passo a passo, pagamento e ciclos: vídeo aprovado lavae-v2 (roteiro em referencias/exemplo-lavae/roteiro.json)",
+  "Preços, pagamento em todas as máquinas e endereço: informados pelo usuário em 16/11/2026"
+ ],
+ "legenda": "Lavar e secar na Lavaê é mais fácil do que parece 💙 Veja o passo a passo completo:\n\n1️⃣ Acesse o totem com o seu CPF\n2️⃣ Escolha lavar ou secar e uma máquina disponível\n3️⃣ Pague no débito, crédito ou Pix (em todas as máquinas)\n4️⃣ Coloque as roupas, escolha o ciclo e aperte iniciar\n5️⃣ Enquanto lava, limpe o filtro da secadora\n6️⃣ Para secar: mesmo caminho no totem, escolha a temperatura e pronto!\n\n💰 Segunda a quinta: R$ 12,90 · Sexta a domingo: R$ 14,90\n📍 Edifício Dom Center – Rua do Aririzal / Av. São Luís Rei de França\n\nSalve para a sua primeira vez e manda para quem ainda não conhece 💙",
+ "hashtags": [
+  "#lavanderia",
+  "#lavanderiaselfservice",
+  "#lavae",
+  "#roupalimpa",
+  "#dicasdelavagem"
+ ],
+ "rotulo_ia": false,
+ "pendencias": [
+  "Horário de funcionamento não entrou (não informado)."
+ ],
+ "video_info": {
+  "duracao": 76.8,
+  "bytes": 73937471,
+  "vcodec": "h264",
+  "largura": 1080,
+  "altura": 1920,
+  "fps": 30.0,
+  "vbitrate": 7565660,
+  "pix_fmt": "yuvj420p",
+  "acodec": "aac",
+  "arate": 48000,
+  "acanais": 2,
+  "crf": 19
+ }
+}
