@@ -84,7 +84,7 @@ def main():
     falhas = 0
     for nome in nomes:
         ok, motivo = precisa_publicar(nome)
-        print(f"- {nome}: {'publicar' if ok else 'pular (' + motivo + ')'}")
+        print(f"- {nome}: {'publicar' if ok else 'pular (' + motivo + ')'}", flush=True)
         if not ok:
             continue
         garantir_aprovacao(nome, quem)

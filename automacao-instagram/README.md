@@ -10,7 +10,7 @@ Ciclo: **pesquisa → roteiro → criação → aprovação → publicação**. 
 | 4. Revisão | Você, na página | `ciclos/<ciclo>/aprovacao.html` |
 | 5. Aprovação | Você diz `aprovado <ciclo>` → Claude roda `aprovar.py` | `ciclos/<ciclo>/aprovacao.json` |
 | 6. Publicação | `publicar.py --de-verdade` (API oficial do Instagram) | `ciclos/<ciclo>/publicacao.json` |
-| 7. Repetição | Tarefa agendada no app Claude (`tarefa-agendada.md`) — **ainda não ligada** | — |
+| 7. Repetição | Rotina agendada na nuvem (`tarefa-agendada.md`) — **ainda não ligada** | — |
 
 ```bash
 python automacao-instagram/criar_post.py 2026-11-16-primeira-vez
@@ -19,6 +19,31 @@ python automacao-instagram/publicar.py 2026-11-16-primeira-vez
 python automacao-instagram/publicar.py 2026-11-16-primeira-vez --de-verdade
 ```
 (o terceiro só simula; o quarto publica)
+
+## Rodando na nuvem (sem o computador ligado)
+
+```
+Claude agendado (nuvem) ──► pull request "Post <ciclo>" ──► você faz merge pelo celular ──► GitHub Actions publica
+   pesquisa, roteiro,          (prévia + legenda +            (= aprovação)                   no Instagram e grava
+   slides, conferência          pendências no corpo)                                          publicacao.json
+```
+
+| Peça | Arquivo |
+|---|---|
+| Rotina agendada (o que o Claude faz na nuvem) | `tarefa-agendada.md` |
+| Conferência de cada pull request (não publica) | `.github/workflows/conferir-post.yml` → `conferir_ciclo.py` |
+| Publicação no merge / manual (Actions → Run workflow) | `.github/workflows/publicar-instagram.yml` → `ci_publicar.py` |
+
+- O merge do pull request **é** a aprovação: `ci_publicar.py` grava `aprovacao.json` em nome de quem fez o merge.
+- Só publica ciclos **alterados** naquele merge; ignora `"publicar": false` e o que já tem `publicacao.json`.
+- As imagens vão para a API pelo link "raw" do GitHub no commit publicado → o repositório precisa ser **público**
+  (não há segredo nele; token fica em *Settings → Secrets and variables → Actions*: `IG_USER_ID`, `IG_ACCESS_TOKEN`).
+  Repositório privado: definir a variável `IG_BASE_URL` apontando para outra hospedagem.
+- Vídeos com filmagem nova continuam no computador (os clipes brutos não vão para o GitHub).
+
+Testado em 16/11/2026 numa cópia do repositório: push inicial não publica nada; merge de um ciclo novo grava a
+aprovação e tenta publicar (falha clara sem token); ciclo `"publicar": false` e ciclo já publicado são pulados;
+URLs saem como `raw.githubusercontent.com/<repo>/<commit>/.../slides/slide-01.jpg` (o GitHub serve com tipo de imagem).
 
 ## Travas (testadas em 16/11/2026, numa cópia do ciclo)
 
