@@ -90,9 +90,9 @@ def esperar_pronto(cid: str, cfg: dict, limite=300, intervalo=5):
 def enviar_video(uri: str, arq, cfg: dict) -> None:
     """Envio direto (resumable upload) do arquivo de vídeo para o contêiner criado."""
     dados = arq.read_bytes()
+    # Igual ao exemplo oficial (curl --data-binary): só Authorization, offset e file_size.
     req = urllib.request.Request(uri, data=dados, method="POST", headers={
-        "Authorization": f"OAuth {cfg['IG_ACCESS_TOKEN']}", "offset": "0", "file_size": str(len(dados)),
-        "Content-Type": "application/octet-stream"})
+        "Authorization": f"OAuth {cfg['IG_ACCESS_TOKEN']}", "offset": "0", "file_size": str(len(dados))})
     try:
         with urllib.request.urlopen(req, timeout=600) as r:
             resp = json.loads(r.read() or b"{}")
@@ -103,19 +103,38 @@ def enviar_video(uri: str, arq, cfg: dict) -> None:
         raise SystemExit(f"ERRO no envio do vídeo: {resp}")
 
 
+def video_publico_ok(url: str, tamanho: int) -> str:
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, method="HEAD"), timeout=30) as r:
+            n = int(r.headers.get("Content-Length") or 0)
+            return "" if r.status == 200 and n == tamanho else f"{url} → {r.status}, {n} bytes (esperado {tamanho})"
+    except Exception as e:  # noqa: BLE001
+        return f"{url} → {e}"
+
+
 def publicar_reel(ciclo, post, reg, pub, de_verdade):
-    """Reels no feed: cria o contêiner (envio direto), manda o arquivo, espera processar e publica."""
+    """Reels no feed. Com endereço público (IG_BASE_URL, preenchido sozinho no GitHub Actions) a Meta baixa o vídeo
+    pelo link (video_url). Sem ele, ou com IG_REEL_ENVIO=resumable, envia o arquivo direto (resumable upload, que a
+    Meta só libera para apps com 'Login do Facebook para Empresas')."""
     cfg = carregar_config()
     video = midias(ciclo, post)[0]
     legenda = texto_final(post)
-    campos = {"media_type": "REELS", "upload_type": "resumable", "caption": legenda, "share_to_feed": "true"}
+    base = cfg["IG_BASE_URL"].rstrip("/")
+    por_link = bool(base) and os.environ.get("IG_REEL_ENVIO", "").lower() != "resumable"
+    url_video = f"{base}/{ciclo.name}/{video.name}" if base else ""
+    campos = {"media_type": "REELS", "caption": legenda, "share_to_feed": "true"}
+    if por_link:
+        campos["video_url"] = url_video
+    else:
+        campos["upload_type"] = "resumable"
     if post.get("capa_ms") is not None:
         campos["thumb_offset"] = str(int(post["capa_ms"]))
     if post.get("rotulo_ia"):
         campos["is_ai_generated"] = "true"
     passos = [f"POST /{{IG_USER_ID}}/media  " + "  ".join(f"{k}={v if k != 'caption' else f'<{len(legenda)} caracteres>'}"
                                                          for k, v in campos.items()),
-              f"POST <uri de envio>  ({video.name}, {video.stat().st_size / 1e6:.1f} MB, cabeçalhos offset/file_size)",
+              (f"(a Meta baixa {video.name}, {video.stat().st_size / 1e6:.1f} MB, pelo link)" if por_link else
+               f"POST <uri de envio>  ({video.name}, {video.stat().st_size / 1e6:.1f} MB, cabeçalhos offset/file_size)"),
               "GET  /{container}?fields=status_code,status  (até FINISHED; vídeo leva alguns minutos)",
               "POST /{IG_USER_ID}/media_publish  creation_id={container}", "GET  /{media_id}?fields=permalink"]
     faltando = [k for k in ("IG_USER_ID", "IG_ACCESS_TOKEN") if not cfg[k]]
@@ -128,13 +147,20 @@ def publicar_reel(ciclo, post, reg, pub, de_verdade):
     if faltando:
         raise SystemExit("ERRO: falta configurar " + ", ".join(faltando) + " (veja o topo deste arquivo).")
     uid = cfg["IG_USER_ID"]
-    r = chamar("POST", f"{uid}/media", cfg, campos)
-    cont, uri = r["id"], r.get("uri")
-    if not uri:
-        raise SystemExit(f"ERRO: a API não devolveu o endereço de envio: {r}")
-    print(f"  contêiner {cont} criado; enviando {video.stat().st_size / 1e6:.1f} MB…", flush=True)
-    enviar_video(uri, video, cfg)
-    print("  vídeo enviado; aguardando o Instagram processar…", flush=True)
+    if por_link:
+        ruim = video_publico_ok(url_video, video.stat().st_size)
+        if ruim:
+            raise SystemExit(f"ERRO: o vídeo não está acessível pelo link público: {ruim}")
+        cont = chamar("POST", f"{uid}/media", cfg, campos)["id"]
+        print(f"  contêiner {cont} criado; a Meta está baixando o vídeo pelo link…", flush=True)
+    else:
+        r = chamar("POST", f"{uid}/media", cfg, campos)
+        cont, uri = r["id"], r.get("uri")
+        if not uri:
+            raise SystemExit(f"ERRO: a API não devolveu o endereço de envio: {r}")
+        print(f"  contêiner {cont} criado; enviando {video.stat().st_size / 1e6:.1f} MB…", flush=True)
+        enviar_video(uri, video, cfg)
+        print("  vídeo enviado; aguardando o Instagram processar…", flush=True)
     esperar_pronto(cont, cfg, limite=900, intervalo=15)
     mid = chamar("POST", f"{uid}/media_publish", cfg, {"creation_id": cont})["id"]
     link = chamar("GET", mid, cfg, {"fields": "permalink"}).get("permalink", "")
