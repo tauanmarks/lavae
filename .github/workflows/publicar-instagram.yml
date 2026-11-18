@@ -1,8 +1,15 @@
 # Publica no Instagram o post cujo pull request foi aprovado (merge na main).
 # O merge É a aprovação. Também dá para publicar um ciclo à mão: Actions → "Publicar no Instagram" → Run workflow.
+# Posts com "agendar_para" (posts automáticos de terça e sexta, 11h) saem pelo agendamento abaixo.
+# O agendamento do GitHub às vezes atrasa ou pula: por isso há horários de reserva. Já publicado não sai de novo.
 name: Publicar no Instagram
 
 on:
+  schedule:
+    - cron: "40 13 * * *"   # 10h40 em São Luís (UTC-3): espera até a hora marcada
+    - cron: "10 14 * * *"   # reserva 11h10
+    - cron: "45 14 * * *"   # reserva 11h45
+    - cron: "30 16 * * *"   # reserva 13h30
   push:
     branches: [main]
     paths: ["automacao-instagram/ciclos/**"]
@@ -22,11 +29,14 @@ permissions:
 jobs:
   publicar:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, '[publicado]') }}
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[publicado]') }}
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          # no agendamento, a main de agora (com o registro de uma execução anterior), não a do disparo
+          ref: ${{ github.event_name == 'schedule' && 'main' || '' }}
 
       - uses: actions/setup-python@v5
         with:
@@ -43,7 +53,9 @@ jobs:
           IG_BASE_URL: ${{ vars.IG_BASE_URL }}
           APROVADO_POR: ${{ github.actor }} (merge no GitHub)
         run: |
-          if [ -n "${{ github.event.inputs.ciclo }}" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python automacao-instagram/ci_publicar.py --agendados
+          elif [ -n "${{ github.event.inputs.ciclo }}" ]; then
             python automacao-instagram/ci_publicar.py --ciclo "${{ github.event.inputs.ciclo }}"
           else
             python automacao-instagram/ci_publicar.py --antes "${{ github.event.before }}" --depois "${{ github.sha }}"

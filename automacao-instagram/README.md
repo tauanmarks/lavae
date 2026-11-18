@@ -1,6 +1,7 @@
 # Automação de posts no Instagram — Lavaê (marca Espuma)
 
-Ciclo: **pesquisa → roteiro → criação → aprovação → publicação**. Nada é publicado sem o seu "aprovado".
+Ciclo: **pesquisa → roteiro → criação → aprovação → publicação**. Nada é publicado sem o seu "aprovado", com uma
+exceção autorizada em 18/11/2026: os **posts automáticos de terça e sexta** (seção abaixo).
 
 | Etapa | Quem faz | Arquivo |
 |---|---|---|
@@ -10,7 +11,7 @@ Ciclo: **pesquisa → roteiro → criação → aprovação → publicação**. 
 | 4. Revisão | Você, na página | `ciclos/<ciclo>/aprovacao.html` |
 | 5. Aprovação | Você diz `aprovado <ciclo>` → Claude roda `aprovar.py` | `ciclos/<ciclo>/aprovacao.json` |
 | 6. Publicação | `publicar.py --de-verdade` (API oficial do Instagram) | `ciclos/<ciclo>/publicacao.json` |
-| 7. Repetição | Rotina agendada na nuvem (`tarefa-agendada.md`) — **ainda não ligada** | — |
+| 7. Repetição | Rotina agendada na nuvem (`tarefa-agendada.md`): posts automáticos de terça e sexta | — |
 
 ```bash
 python automacao-instagram/criar_post.py 2026-11-16-primeira-vez
@@ -44,6 +45,24 @@ Claude agendado (nuvem) ──► pull request "Post <ciclo>" ──► você fa
 Testado em 16/11/2026 numa cópia do repositório: push inicial não publica nada; merge de um ciclo novo grava a
 aprovação e tenta publicar (falha clara sem token); ciclo `"publicar": false` e ciclo já publicado são pulados;
 URLs saem como `raw.githubusercontent.com/<repo>/<commit>/.../slides/slide-01.jpg` (o GitHub serve com tipo de imagem).
+
+## Posts automáticos (terça e sexta, 11h)
+
+```
+seg e qui 20h: rotina do Claude na nuvem          ter e sex 11h: GitHub Actions ("Publicar no Instagram", agendado)
+  pesquisa → post.json → Canva (modelo fixo)  ──►    publica o post no feed → 30 s depois o story de chamada
+  → aprova em nome da rotina → push na main          grava publicacao.json (id do post e do story)
+```
+
+- Roteiro da rotina: `tarefa-agendada.md`. Fatos que ela pode afirmar: `fatos-lavae.md` (atualize quando algo mudar).
+- No post.json: `"agendar_para": "AAAA-MM-DDT11:00"` (horário de São Luís), `"story_chamada": "story/chamada.jpg"`
+  (1080×1920) e `"automatico": true`.
+- **Cancelar um post antes das 11h**: no GitHub, edite o post.json do ciclo e ponha `"publicar": false`.
+- **Publicar já** um post agendado: Actions → "Publicar no Instagram" → Run workflow → nome do ciclo.
+- O agendamento do GitHub roda 10h40 (espera até 11h) e tem reservas às 11h10, 11h45 e 13h30: o que já saiu não sai
+  de novo. Agendado que passou 10 h sem sair não é publicado sozinho (fica um aviso na execução).
+- Se o feed sair e o story não, a próxima execução publica só o story.
+- A API não põe figurinha de link no story: ele mostra o assunto e chama para o perfil.
 
 ## Travas (testadas em 16/11/2026, numa cópia do ciclo)
 

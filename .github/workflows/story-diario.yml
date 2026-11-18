@@ -7,6 +7,8 @@ name: Story diário
 on:
   schedule:
     - cron: "40 11 * * *"   # 11h40 UTC = 8h40 em São Luís (UTC-3)
+    - cron: "15 12 * * *"   # reserva 9h15 (o GitHub às vezes pula um agendamento; já publicado não sai de novo)
+    - cron: "0 13 * * *"    # reserva 10h
   workflow_dispatch:
     inputs:
       modo:
@@ -28,6 +30,9 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          # no agendamento, a main de agora (com o registro de uma execução anterior), não a do disparo
+          ref: ${{ github.event_name == 'schedule' && 'main' || '' }}
 
       - uses: actions/setup-python@v5
         with:

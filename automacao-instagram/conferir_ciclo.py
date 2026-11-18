@@ -7,7 +7,7 @@ import sys
 
 from PIL import Image
 
-from comum import conferir_video_reel, eh_reel, imagens, ler_post, midias, pasta_ciclo, texto_final, validar_post
+from comum import conferir_video_reel, eh_reel, imagens, ler_post, midias, pasta_ciclo, story_chamada, texto_final, validar_post
 
 
 def conferir(nome: str) -> list[str]:
@@ -38,6 +38,17 @@ def conferir(nome: str) -> list[str]:
             elif not 0.8 <= w / h <= 1.91:
                 erros.append(f"{f.name}: {w}×{h} fora de 4:5 a 1,91:1")
         resumo = f"{len(fs)} slides"
+        chamada = story_chamada(ciclo, post)
+        if chamada:
+            if not chamada.exists():
+                erros.append(f"story de chamada {post['story_chamada']} não encontrado")
+            else:
+                im = Image.open(chamada)
+                if im.format != "JPEG" or im.size != (1080, 1920):
+                    erros.append(f"story de chamada: {im.format} {im.size[0]}×{im.size[1]} (precisa JPEG 1080×1920)")
+                resumo += " + story de chamada"
+        if post.get("agendar_para"):
+            resumo += f", agendado para {post['agendar_para']}"
     if not (ciclo / "previa.jpg").exists():
         erros.append("falta previa.jpg")
     print(f"{'OK  ' if not erros else 'ERRO'} {ciclo.name}: {resumo}, legenda {len(texto_final(post))} caracteres")

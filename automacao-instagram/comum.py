@@ -1,5 +1,6 @@
 """Funções comuns do ciclo de posts (criar → aprovar → publicar)."""
 import hashlib
+from datetime import datetime
 import json
 import sys
 from pathlib import Path
@@ -50,6 +51,12 @@ def midias(ciclo: Path, post: dict | None = None) -> list[Path]:
     return imagens(ciclo)
 
 
+def story_chamada(ciclo: Path, post: dict) -> Path | None:
+    """Story 9:16 que sai logo depois do post do feed, chamando para ele ("story_chamada" no post.json)."""
+    nome = post.get("story_chamada")
+    return ciclo / nome if nome else None
+
+
 def impressao_digital(ciclo: Path, post: dict) -> str:
     """Hash do que será publicado: mídias + legenda final (+ capa do reel). Mudou algo → aprovar de novo."""
     h = hashlib.sha256()
@@ -59,6 +66,9 @@ def impressao_digital(ciclo: Path, post: dict) -> str:
             for bloco in iter(lambda: f.read(1 << 20), b""):
                 h.update(bloco)
     h.update(texto_final(post).encode("utf-8"))
+    chamada = story_chamada(ciclo, post)
+    if chamada and chamada.exists():  # o story de chamada também é aprovado junto
+        h.update(b"story_chamada:" + chamada.read_bytes())
     if eh_reel(post):
         h.update(str(post.get("capa_ms", "")).encode())
     return h.hexdigest()
@@ -162,4 +172,10 @@ def validar_post(post: dict) -> list[str]:
             erros.append(f"slide {i}: título com {len(t)} caracteres (máx. 40, senão quebra em 4+ linhas)")
         if len(s.get("texto", "")) > 140:
             erros.append(f"slide {i}: texto com {len(s['texto'])} caracteres (máx. 140)")
+    agenda = post.get("agendar_para")
+    if agenda:
+        try:
+            datetime.fromisoformat(agenda)
+        except ValueError:
+            erros.append(f"agendar_para \"{agenda}\" fora do formato AAAA-MM-DDTHH:MM (horário de São Luís)")
     return erros

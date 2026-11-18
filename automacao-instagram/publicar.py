@@ -5,7 +5,7 @@
 
 Trava de segurança:
   - sem aprovacao.json, ou se imagens/legenda mudaram depois da aprovação → recusa;
-  - ciclo já publicado (publicacao.json com id) → recusa;
+  - ciclo já publicado (publicacao.json com id) → recusa (se só faltou o story de chamada, publica só ele);
   - o token nunca é impresso nem gravado em relatório.
 
 Configuração (variáveis de ambiente ou arquivo automacao-instagram/.env, que NÃO deve ser compartilhado):
@@ -28,7 +28,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime
 
-from comum import AUTO, eh_reel, impressao_digital, imagens, ler_post, midias, pasta_ciclo, texto_final
+from comum import AUTO, eh_reel, impressao_digital, imagens, ler_post, midias, pasta_ciclo, story_chamada, texto_final
 
 HOSTS = {"instagram": "https://graph.instagram.com", "facebook": "https://graph.facebook.com"}
 
@@ -205,6 +205,28 @@ def publicar_stories(ciclo, post, reg, pub, imgs, de_verdade):
     print(f"PUBLICADO: sequência de {len(feitos)} stories")
 
 
+def publicar_chamada(ciclo, post, pub, de_verdade):
+    """Story 9:16 ("story_chamada") logo depois do post do feed, convidando a ver o post.
+    A API não põe figurinha de link: o story mostra o assunto e chama para o perfil."""
+    cfg = carregar_config()
+    base = cfg["IG_BASE_URL"].rstrip("/") or "https://<IG_BASE_URL>"
+    url = f"{base}/{ciclo.name}/{post['story_chamada']}"
+    if not de_verdade:
+        print(f"  POST /{{IG_USER_ID}}/media  media_type=STORIES  image_url={url}  →  media_publish  (story de chamada)")
+        return
+    reg = json.loads(pub.read_text(encoding="utf-8"))
+    ruim = url_publica_ok(url)
+    if ruim:
+        raise SystemExit(f"ERRO: story de chamada não acessível como JPEG: {ruim}")
+    uid = cfg["IG_USER_ID"]
+    cont = chamar("POST", f"{uid}/media", cfg, {"media_type": "STORIES", "image_url": url})["id"]
+    esperar_pronto(cont, cfg, limite=180)
+    reg["story_id"] = chamar("POST", f"{uid}/media_publish", cfg, {"creation_id": cont})["id"]
+    reg["story_em"] = datetime.now().isoformat(timespec="seconds")
+    pub.write_text(json.dumps(reg, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"PUBLICADO: story de chamada ({reg['story_id']})")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("ciclo")
@@ -222,7 +244,13 @@ def main():
     if reg.get("impressao_digital") != impressao_digital(ciclo, post):
         raise SystemExit("RECUSADO: mídia ou legenda mudaram depois da aprovação. Gere de novo e peça nova aprovação.")
     pub = ciclo / "publicacao.json"
+    chamada = story_chamada(ciclo, post)
+    if chamada and not chamada.exists():
+        raise SystemExit(f"ERRO: story de chamada {post['story_chamada']} não encontrado.")
     if pub.exists() and json.loads(pub.read_text(encoding="utf-8")).get("id"):
+        if chamada and not json.loads(pub.read_text(encoding="utf-8")).get("story_id"):
+            print("Post do feed já publicado; falta só o story de chamada.")
+            return publicar_chamada(ciclo, post, pub, a.de_verdade)
         raise SystemExit("RECUSADO: este ciclo já foi publicado (publicacao.json).")
     if eh_reel(post):
         return publicar_reel(ciclo, post, reg, pub, a.de_verdade)
@@ -250,6 +278,8 @@ def main():
         faltando = [k for k in ("IG_USER_ID", "IG_ACCESS_TOKEN", "IG_BASE_URL") if not cfg[k]]
         print(f"SIMULAÇÃO — {ciclo.name}: aprovado por {reg['por']} em {reg['em']}, {len(imgs)} imagens, legenda {len(legenda)} caracteres")
         print("Chamadas que seriam feitas:\n  " + "\n  ".join(passos))
+        if chamada:
+            publicar_chamada(ciclo, post, pub, False)
         print("Configuração faltando para publicar: " + (", ".join(faltando) if faltando else "nada"))
         return
 
@@ -277,6 +307,9 @@ def main():
     pub.write_text(json.dumps({"id": mid, "permalink": link, "em": datetime.now().isoformat(timespec="seconds"),
                                "impressao_digital": reg["impressao_digital"]}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"PUBLICADO: {link or mid}")
+    if chamada:
+        time.sleep(30)  # o post aparece no perfil antes de o story chamar para ele
+        publicar_chamada(ciclo, post, pub, True)
 
 
 if __name__ == "__main__":
