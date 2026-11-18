@@ -14,7 +14,9 @@ Brasil. Trabalhe no repositório clonado, na branch `main`.
 
 - Leia `CLAUDE.md` (seção de estilo Espuma), `automacao-instagram/fatos-lavae.md` e este arquivo inteiro.
 - `pip install pillow`.
-- Data do post = **amanhã** (terça ou sexta). Se amanhã não for terça nem sexta, pare sem fazer nada.
+- Data do post = **amanhã** (terça ou sexta, fuso America/Fortaleza: `TZ=America/Fortaleza date`). Se amanhã não for
+  terça nem sexta, pare sem fazer nada. Exceção: se a mensagem que iniciou a rotina disser
+  `DATA DO POST: AAAA-MM-DD`, use essa data (vale qualquer dia).
 - Se já existir um ciclo com `"agendar_para"` para amanhã, pare (já foi feito).
 
 ## 1. Pauta (sem repetir)
