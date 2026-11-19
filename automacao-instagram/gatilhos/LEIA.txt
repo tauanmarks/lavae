@@ -1,0 +1,2 @@
+Arquivos tocados pelas rotinas-gatilho do Claude (nuvem) para disparar o GitHub Actions na hora certa.
+story.txt → Story diário (9h) · posts.txt → posts agendados (11h). O conteúdo é só a data/hora do último disparo.

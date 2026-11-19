@@ -1,5 +1,6 @@
 # Story diário: todo dia às 9h de São Luís publica a imagem aprovada do rodízio (automacao-instagram/stories).
-# O GitHub roda às 8h40 (o agendamento dele costuma atrasar alguns minutos) e o script espera até 9h00.
+# Disparo principal: a rotina "Lavaê – gatilho 9h" do Claude (nuvem) faz push em automacao-instagram/gatilhos/story.txt
+# às ~8h55; o script espera até 9h00. O agendamento do GitHub atrasa horas ou pula (19/11 não rodou): fica de reserva.
 # Pausar: Settings → Secrets and variables → Actions → Variables → STORIES_ATIVO = nao.
 # Testar à mão: Actions → "Story diário" → Run workflow (modo simular não publica nada).
 name: Story diário
@@ -9,6 +10,9 @@ on:
     - cron: "40 11 * * *"   # 11h40 UTC = 8h40 em São Luís (UTC-3)
     - cron: "15 12 * * *"   # reserva 9h15 (o GitHub às vezes pula um agendamento; já publicado não sai de novo)
     - cron: "0 13 * * *"    # reserva 10h
+  push:
+    branches: [main]
+    paths: ["automacao-instagram/gatilhos/story.txt"]
   workflow_dispatch:
     inputs:
       modo:
@@ -32,7 +36,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           # no agendamento, a main de agora (com o registro de uma execução anterior), não a do disparo
-          ref: ${{ github.event_name == 'schedule' && 'main' || '' }}
+          ref: ${{ github.event_name != 'workflow_dispatch' && 'main' || '' }}
 
       - uses: actions/setup-python@v5
         with:
@@ -46,7 +50,7 @@ jobs:
           IG_API_HOST: ${{ vars.IG_API_HOST }}
           STORIES_ATIVO: ${{ vars.STORIES_ATIVO }}
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "push" ]; then
             python automacao-instagram/publicar_story.py --esperar --de-verdade
           elif [ "${{ github.event.inputs.modo }}" = "publicar" ]; then
             python automacao-instagram/publicar_story.py --de-verdade
