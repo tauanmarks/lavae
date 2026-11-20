@@ -7,6 +7,8 @@ import sys
 
 from PIL import Image
 
+import checar_encaixe
+
 from comum import conferir_video_reel, eh_reel, imagens, ler_post, midias, pasta_ciclo, story_chamada, texto_final, validar_post
 
 
@@ -47,6 +49,8 @@ def conferir(nome: str) -> list[str]:
                 if im.format != "JPEG" or im.size != (1080, 1920):
                     erros.append(f"story de chamada: {im.format} {im.size[0]}×{im.size[1]} (precisa JPEG 1080×1920)")
                 resumo += " + story de chamada"
+        if post.get("origem") == "canva":  # imagens do Canva: nada pode ficar flutuando perto da borda
+            erros += checar_encaixe.checar_varios(fs + ([chamada] if chamada and chamada.exists() else []))
         if post.get("agendar_para"):
             resumo += f", agendado para {post['agendar_para']}"
     if not (ciclo / "previa.jpg").exists():

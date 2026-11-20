@@ -13,7 +13,7 @@ Brasil. Trabalhe no repositório clonado, na branch `main`.
 ## 0. Antes de começar
 
 - Leia `CLAUDE.md` (seção de estilo Espuma), `automacao-instagram/fatos-lavae.md` e este arquivo inteiro.
-- `pip install pillow`.
+- `pip install pillow numpy`.
 - Data do post = **amanhã** (terça ou sexta, fuso America/Fortaleza: `TZ=America/Fortaleza date`). Se amanhã não for
   terça nem sexta, pare sem fazer nada. Exceção: se a mensagem que iniciou a rotina disser
   `DATA DO POST: AAAA-MM-DD`, use essa data (vale qualquer dia).
@@ -68,8 +68,13 @@ Modelos fixos (NUNCA edite os originais; trabalhe sempre numa cópia):
 
 | Modelo | Design | Páginas |
 |---|---|---|
-| Feed 4:5 (1080×1350) | `DAHbSSBikq0` ("MODELO Lavaê – feed 4:5") | 1 capa · 2 dica · 3 final |
+| Feed 3:4 (1080×1440, vira 4:5 no corte) | `DAHbdymvpHc` ("MODELO Lavaê – feed 3:4 … – v2") | 1 capa · 2 dica · 3 final |
 | Story de chamada 9:16 (1080×1920) | `DAHbSRUTWrc` ("MODELO Lavaê – story de chamada") | 1 página |
+
+**NUNCA use `resize-design`** nem mude o tamanho da página: o redimensionamento encolhe o layout e deixa ondas e
+ilustrações "flutuando" a 20–35 px da borda (post de 20/11/2026 saiu assim e teve de ser refeito). O modelo antigo
+`DAHbSSBikq0` (4:5) está aposentado por esse defeito. O design fica 3:4 e o `criar_post.py` corta 45 px em cima e
+embaixo para chegar a 1080×1350; por isso nada importante pode ficar a menos de 60 px do topo ou da base.
 
 Elementos de texto do feed (procure pelo texto atual no `read-design`; os ids mudam nas cópias):
 - capa: pílula "dica lavaê" (troque por "dica lavaê", "você sabia?", "cuidado", "mito ou verdade?"… até 12
@@ -79,10 +84,10 @@ Elementos de texto do feed (procure pelo texto atual no `read-design`; os ids mu
 - final: "lavar ficou fácil!" e "Salve este post e compartilhe 💙" (mantenha), endereço e horário (mantenha).
 
 Passos (ferramentas do conector Canva):
-1. `copy-design` do modelo de feed (`DAHbSSBikq0`), com título "Post <AAAA-MM-DD> – <pauta>".
+1. `copy-design` do modelo de feed (`DAHbdymvpHc`) e renomeie (`update_title`) para "Post <AAAA-MM-DD> – <pauta>".
 2. **Carrossel com N dicas** (3 a 6): `merge-designs` `modify_existing_design` na cópia, `insert_pages` com
-   `source` = a própria cópia, `page_numbers: [2]`, `after_page_number: 2`, repetido N−1 vezes (a página de dica
-   fica repetida; a final continua por último).
+   `source` = a própria cópia, `page_numbers: [2]`, `after_page_number: 2`, repetido N−1 vezes, **uma operação por
+   chamada** (a página de dica fica repetida; a final continua por último).
    **Imagem única**: `merge-designs` `delete_pages` `[2, 3]` (fica só a capa).
 3. `read-design` com `open_transaction: true` e `design_content` para ver os ids. Com `edit-design`, uma página
    por vez (`page_index`): `replace_text` em cada texto. Na imagem única, a frase da dica vai no subtítulo e
@@ -91,8 +96,8 @@ Passos (ferramentas do conector Canva):
    Nunca troque nem redesenhe o logo (imagem `MAHbIedyFz4`). Não adicione fotos.
 4. Confira a miniatura que cada `edit-design` devolve: texto cortado, sobreposto, saindo da margem, palavra
    quebrada no meio, texto em cima da ilustração. Corrija e confira de novo. Só então `finalize: "commit"`.
-5. `export-design` JPG, `width: 1080`, `height: 1350`, `quality: 92`; baixe cada página com curl para
-   `slides/slide-01.jpg`, `slide-02.jpg`… (na ordem).
+5. `export-design` JPG, `width: 1080`, `height: 1440`, `quality: 92`; baixe cada página com curl para
+   `slides/slide-01.jpg`, `slide-02.jpg`… (na ordem). Não exporte em 1350: isso distorce.
 6. Story: `copy-design` de `DAHbSRUTWrc`; troque só "Título do post em até três linhas" pelo título da capa
    (ou versão mais curta, até 40 caracteres). Mantenha "Post novo", "no nosso feed", "Toque no nosso perfil e
    confira", "Veja agora 👆", endereço e horário. Commit, exporte JPG 1080×1920 em `story/chamada.jpg`.
@@ -111,7 +116,12 @@ python aprovar.py <pasta> --por "rotina automática (autorizada por tauanmarks e
 python publicar.py <pasta>            # simulação: confira que mostra o feed + o story de chamada
 ```
 
-Abra `previa.jpg` e `story/chamada.jpg` e olhe com atenção antes de aprovar.
+`criar_post.py` corta para 1080×1350 e roda o **verificador de encaixe** (`checar_encaixe.py`); `conferir_ciclo.py`
+roda de novo. Qualquer "ERRO" = não aprove: corrija no Canva e exporte de novo.
+Depois abra **cada slide em tamanho real** (`slides/slide-0N.jpg`, um por vez, não a miniatura nem a prévia) e o
+`story/chamada.jpg`, e confira: tudo encostado na borda ou com margem folgada, nada cortado reto perto da borda,
+texto inteiro e sem cair em cima da ilustração, logo original. A miniatura esconde esses defeitos.
+O GitHub roda a mesma conferência antes de publicar e recusa o post se falhar.
 
 ## 5. Gravar
 

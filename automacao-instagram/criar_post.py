@@ -15,7 +15,8 @@ from datetime import datetime
 
 from PIL import Image
 
-from comum import REMOTION, impressao_digital, imagens, ler_post, pasta_ciclo, texto_final, validar_post
+import checar_encaixe
+from comum import REMOTION, impressao_digital, imagens, ler_post, pasta_ciclo, story_chamada, texto_final, validar_post
 
 
 def renderizar(ciclo, post):
@@ -46,8 +47,16 @@ def renderizar(ciclo, post):
 
 
 def conferir_slides_prontos(ciclo, post):
-    """Slides exportados de fora (Canva): não renderiza, só confere o que a API do Instagram exige."""
+    """Slides exportados de fora (Canva): não renderiza, só confere o que a API do Instagram exige.
+    O modelo do Canva é 3:4 (1080×1440), que a API recusa: aqui ele é cortado para 4:5 (1080×1350), tirando 45 px
+    de cima e de baixo. NUNCA redimensione o design no Canva (resize-design desencaixa tudo: defeito de 20/11/2026).
+    No fim, roda checar_encaixe.py (nada flutuando perto da borda)."""
     fs = imagens(ciclo)
+    for f in fs:
+        im = Image.open(f)
+        if im.size == (1080, 1440):
+            im.convert("RGB").crop((0, 45, 1080, 1395)).save(f, "JPEG", quality=92)
+            print(f"{f.name}: 1080×1440 cortado para 1080×1350")
     erros = []
     if len(fs) != len(post["slides"]):
         erros.append(f"{len(fs)} imagens em slides/, mas o post.json tem {len(post['slides'])} slides")
@@ -60,6 +69,8 @@ def conferir_slides_prontos(ciclo, post):
             erros.append(f"{f.name}: {w}×{h} fora da faixa 4:5 a 1,91:1 aceita pela API (3:4 é recusado)")
         elif (w, h) != (1080, 1350):
             print(f"Aviso: {f.name} tem {w}×{h} (o padrão do fluxo é 1080×1350)")
+    chamada = story_chamada(ciclo, post)
+    erros += checar_encaixe.checar_varios(fs + ([chamada] if chamada and chamada.exists() else []))
     if erros:
         sys.exit("ERRO nos slides prontos:\n- " + "\n- ".join(erros))
 

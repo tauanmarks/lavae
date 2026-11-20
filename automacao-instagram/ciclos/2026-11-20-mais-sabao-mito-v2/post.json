@@ -1,0 +1,76 @@
+{
+ "ciclo": "2026-11-20-mais-sabao-mito-v2",
+ "conta": "lavae",
+ "formato": "carrossel",
+ "marca": "espuma",
+ "origem": "canva",
+ "pauta": "Mito ou verdade: mais sabão deixa a roupa mais limpa? (mito × verdade)",
+ "fontes_fatos": [
+  "Excesso de sabão/espuma atrapalha a limpeza e deixa resíduo (roupa e toalha ásperas, com cheiro): pesquisa.md",
+  "Máquina lotada lava pior (água e sabão não circulam): pesquisa.md",
+  "Dosagem automática de Omo e Comfort na Lavaê: fatos-lavae.md (informado pelo usuário em 18/11/2026)",
+  "Endereço e horário: fatos-lavae.md"
+ ],
+ "slides": [
+  {
+   "tipo": "capa",
+   "pilula": "você sabia?",
+   "titulo": "Mais sabão, roupa mais limpa?",
+   "texto": "spoiler: é mito"
+  },
+  {
+   "tipo": "dica",
+   "n": 1,
+   "titulo": "Espuma demais atrapalha",
+   "texto": "A espuma em excesso amortece o atrito entre as peças, e é esse movimento que ajuda a soltar a sujeira."
+  },
+  {
+   "tipo": "dica",
+   "n": 2,
+   "titulo": "Sobra resíduo no tecido",
+   "texto": "O sabão que o enxágue não tira fica nas fibras: toalha áspera, que absorve menos e pode pegar cheiro."
+  },
+  {
+   "tipo": "dica",
+   "n": 3,
+   "titulo": "Deixe espaço no tambor",
+   "texto": "Lotado, água e sabão não circulam. Se a mão não passa entre a roupa e o tambor, tire algumas peças."
+  },
+  {
+   "tipo": "dica",
+   "n": 4,
+   "titulo": "Na Lavaê, a dose é automática",
+   "texto": "Omo e Comfort entram sozinhos, na medida certa. Você não precisa levar sabão nem amaciante."
+  },
+  {
+   "tipo": "final",
+   "frase": "lavar ficou fácil!",
+   "chamada": "Salve este post e compartilhe 💙",
+   "rodape": "📍 Edifício Dom Center · Rua do Aririzal / Av. São Luís Rei de França · todos os dias, 6h30 à meia-noite"
+  }
+ ],
+ "legenda": "Mais sabão = roupa mais limpa? É mito! 🫧\n\nParece lógico, mas sabão demais atrapalha a lavagem:\n\n🫧 A espuma em excesso amortece o atrito entre as peças, que é justamente o que solta a sujeira\n🧺 O que o enxágue não tira fica nas fibras e deixa a toalha áspera, absorvendo menos e com chance de pegar cheiro\n🌀 Máquina lotada também lava pior: água e sabão precisam de espaço para circular\n\nNa Lavaê você não precisa pensar nisso: a dosagem de Omo e Comfort é automática, na medida certa para cada ciclo. É só trazer a roupa! Lavagem em 30 min, secagem em 45 min, tudo pronto em cerca de 1h15.\n\n📍 Edifício Dom Center – Rua do Aririzal / Av. São Luís Rei de França\n🕕 Todos os dias, das 6h30 à meia-noite\n\nSalve para lembrar e manda para quem ainda exagera no sabão 💙",
+ "hashtags": [
+  "#lavanderia",
+  "#lavanderiaselfservice",
+  "#dicasdelavagem",
+  "#roupalimpa",
+  "#cuidadoscomaroupa",
+  "#mitoouverdade",
+  "#saoluis",
+  "#saoluisma",
+  "#lavanderiasaoluis",
+  "#lavae"
+ ],
+ "rotulo_ia": false,
+ "story_chamada": "story/chamada.jpg",
+ "automatico": true,
+ "canva": {
+  "feed": "DAHbd83qSL4",
+  "story": "DAHbSeF2GD4",
+  "modelo": "DAHbdymvpHc"
+ },
+ "pendencias": [],
+ "obs": "Refeito no modelo v2 (3:4 cortado para 4:5, sem resize). Substitui o ciclo 2026-11-20-mais-sabao-mito.",
+ "publicacao_pedida": "2026-11-20: republicar agora com o modelo corrigido (o de 11h saiu desencaixado), pedido do usuário"
+}

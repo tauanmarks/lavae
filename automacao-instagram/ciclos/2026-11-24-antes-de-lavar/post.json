@@ -13,12 +13,42 @@
   "Ciclo delicadas na lavadora, dosagem automática de Omo e Comfort, 30 + 45 min, endereço e horário: fatos-lavae.md"
  ],
  "slides": [
-  {"tipo": "capa", "pilula": "checklist", "titulo": "Antes de pôr na máquina", "texto": "4 cuidados rápidos"},
-  {"tipo": "dica", "n": 1, "titulo": "Esvazie os bolsos", "texto": "Um papel esquecido se desfaz e espalha fiapos na roupa toda. Caneta e batom podem manchar a carga inteira."},
-  {"tipo": "dica", "n": 2, "titulo": "Feche os zíperes", "texto": "Zíper aberto tem dentes que prendem e puxam os fios das outras peças. Feche até o fim antes de lavar."},
-  {"tipo": "dica", "n": 3, "titulo": "Vire do avesso", "texto": "Jeans, peças escuras e estampadas: do avesso, a parte de fora sofre menos atrito e desbota menos."},
-  {"tipo": "dica", "n": 4, "titulo": "Separe escuras e claras", "texto": "Escuras soltam tinta e jeans desgasta tecido fino. Na Lavaê, peças delicadas vão no ciclo delicadas."},
-  {"tipo": "final", "frase": "lavar ficou fácil!", "chamada": "Salve este post e compartilhe 💙", "rodape": "📍 Edifício Dom Center · Rua do Aririzal / Av. São Luís Rei de França · todos os dias, 6h30 à meia-noite"}
+  {
+   "tipo": "capa",
+   "pilula": "checklist",
+   "titulo": "Antes de pôr na máquina",
+   "texto": "4 cuidados rápidos"
+  },
+  {
+   "tipo": "dica",
+   "n": 1,
+   "titulo": "Esvazie os bolsos",
+   "texto": "Um papel esquecido se desfaz e espalha fiapos na roupa toda. Caneta e batom podem manchar a carga inteira."
+  },
+  {
+   "tipo": "dica",
+   "n": 2,
+   "titulo": "Feche os zíperes",
+   "texto": "Zíper aberto tem dentes que prendem e puxam os fios das outras peças. Feche até o fim antes de lavar."
+  },
+  {
+   "tipo": "dica",
+   "n": 3,
+   "titulo": "Vire do avesso",
+   "texto": "Jeans, peças escuras e estampadas: do avesso, a parte de fora sofre menos atrito e desbota menos."
+  },
+  {
+   "tipo": "dica",
+   "n": 4,
+   "titulo": "Separe escuras e claras",
+   "texto": "Escuras soltam tinta e jeans desgasta tecido fino. Na Lavaê, peças delicadas vão no ciclo delicadas."
+  },
+  {
+   "tipo": "final",
+   "frase": "lavar ficou fácil!",
+   "chamada": "Salve este post e compartilhe 💙",
+   "rodape": "📍 Edifício Dom Center · Rua do Aririzal / Av. São Luís Rei de França · todos os dias, 6h30 à meia-noite"
+  }
  ],
  "legenda": "Um minutinho antes de lavar faz a roupa durar muito mais 🧺\n\nO checklist rápido antes de pôr na máquina:\n\n👖 Esvazie os bolsos: papel vira fiapo na roupa toda, e caneta ou batom podem manchar a carga inteira\n🤐 Feche os zíperes: aberto, ele prende e puxa os fios das outras peças\n🔄 Vire do avesso jeans, peças escuras e estampadas: a parte de fora sofre menos atrito e desbota menos\n🎨 Separe escuras e claras, e o jeans das peças finas\n\nNa Lavaê a lavadora tem ciclo normal e ciclo delicadas, e o Omo e o Comfort entram sozinhos, na dose certa. Você só traz a roupa já separadinha! Lavagem em 30 min, secagem em 45 min, tudo pronto em cerca de 1h15.\n\n📍 Edifício Dom Center – Rua do Aririzal / Av. São Luís Rei de França\n🕕 Todos os dias, das 6h30 à meia-noite\n\nSalve para lembrar 💙",
  "hashtags": [
@@ -37,6 +67,11 @@
  "agendar_para": "2026-11-24T11:00",
  "story_chamada": "story/chamada.jpg",
  "automatico": true,
- "canva": {"feed": "DAHbShmZHsw", "story": "DAHbSt3Hcmw"},
- "pendencias": []
+ "canva": {
+  "feed": "DAHbShmZHsw",
+  "story": "DAHbSt3Hcmw"
+ },
+ "pendencias": [],
+ "publicar": false,
+ "obs_suspenso": "20/11/2026: suspenso — imagens do modelo 4:5 desencaixado; refazer no modelo v2."
 }

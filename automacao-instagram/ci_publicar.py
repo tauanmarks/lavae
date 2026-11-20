@@ -152,6 +152,11 @@ def main():
             print("  pulado: agendado sem aprovação válida para esta versão")
             falhas += 1
             continue
+        conf = subprocess.run([sys.executable, str(AUTO / "conferir_ciclo.py"), nome], cwd=RAIZ)
+        if conf.returncode != 0:  # trava final: imagem desencaixada, tamanho errado etc. não vão ao ar
+            print(f"::error::{nome}: conferência falhou (veja acima). Nada publicado.")
+            falhas += 1
+            continue
         garantir_aprovacao(nome, quem)
         r = subprocess.run([sys.executable, str(AUTO / "publicar.py"), nome, "--de-verdade"], cwd=RAIZ)
         if r.returncode != 0:

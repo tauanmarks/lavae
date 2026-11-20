@@ -44,7 +44,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: pip install pillow
+      - run: pip install pillow numpy
 
       - name: Publicar ciclos aprovados
         env:
