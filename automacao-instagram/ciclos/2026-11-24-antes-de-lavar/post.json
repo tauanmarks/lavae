@@ -68,10 +68,10 @@
  "story_chamada": "story/chamada.jpg",
  "automatico": true,
  "canva": {
-  "feed": "DAHbShmZHsw",
-  "story": "DAHbSt3Hcmw"
+  "feed": "DAHbeH2kQFY",
+  "story": "DAHbSt3Hcmw",
+  "modelo": "DAHbdymvpHc"
  },
  "pendencias": [],
- "publicar": false,
- "obs_suspenso": "20/11/2026: suspenso — imagens do modelo 4:5 desencaixado; refazer no modelo v2."
+ "obs_refeito": "20/11/2026: imagens refeitas no modelo v2 (3:4 cortado, número centralizado) depois do defeito do post de 20/11."
 }

@@ -80,7 +80,7 @@ Elementos de texto do feed (procure pelo texto atual no `read-design`; os ids mu
 - capa: pílula "dica lavaê" (troque por "dica lavaê", "você sabia?", "cuidado", "mito ou verdade?"… até 12
   caracteres), título "Título da capa em até três linhas" (até 40 caracteres), subtítulo na pílula verde
   "subtítulo curto" (até 20 caracteres), "arraste para o lado →";
-- dica: número "1" no círculo, "Título da dica em até três linhas" (até 40), texto de apoio (até 140);
+- dica: número "1" no círculo (só troque o texto; a caixa do número já está centralizada na bolinha, não mova), "Título da dica em até três linhas" (até 40), texto de apoio (até 140);
 - final: "lavar ficou fácil!" e "Salve este post e compartilhe 💙" (mantenha), endereço e horário (mantenha).
 
 Passos (ferramentas do conector Canva):
