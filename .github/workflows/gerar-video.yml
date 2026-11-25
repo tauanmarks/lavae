@@ -2,12 +2,14 @@
 # A rotina da nuvem de quinta grava o carrossel do Canva (reserva, já aprovado) + video/roteiro.json. Este workflow
 # narra, mede os textos, renderiza e confere tudo; só se TUDO passar o post vira reel. Qualquer falha: fica o
 # carrossel e o motivo vai para video/FALHOU.md. Ninguém precisa revisar nada.
+# Teste completo sem mexer em post nenhum: push em automacao-instagram/gatilhos/video-teste.txt com "[teste-video]"
+# na mensagem (usa video-carrossel/exemplo-roteiro.json; o vídeo fica como artefato da execução).
 name: Gerar vídeo de sexta
 
 on:
   push:
     branches: [main]
-    paths: ["automacao-instagram/ciclos/**/video/roteiro.json"]
+    paths: ["automacao-instagram/ciclos/**/video/roteiro.json", "automacao-instagram/gatilhos/video-teste.txt"]
   schedule:
     - cron: "0 9 * * 5"    # reserva: sexta 6h em São Luís (se o disparo de quinta não rodou)
     - cron: "30 10 * * 5"  # reserva: sexta 7h30
@@ -65,7 +67,9 @@ jobs:
         run: |
           ARGS=""
           if [ -n "${{ github.event.inputs.ciclo }}" ]; then ARGS="${{ github.event.inputs.ciclo }}"; else ARGS="--pendentes"; fi
-          if [ "${{ github.event.inputs.teste }}" = "true" ]; then
+          if [ "${{ contains(github.event.head_commit.message, '[teste-video]') }}" = "true" ]; then
+            ARGS="--exemplo"
+          elif [ "${{ github.event.inputs.teste }}" = "true" ]; then
             if [ -n "${{ github.event.inputs.ciclo }}" ]; then ARGS="$ARGS --teste"; else ARGS="--exemplo"; fi
           fi
           python automacao-instagram/gerar_video.py $ARGS
@@ -85,7 +89,7 @@ jobs:
           retention-days: 14
 
       - name: Gravar resultado
-        if: ${{ github.event.inputs.teste != 'true' }}
+        if: ${{ github.event.inputs.teste != 'true' && !contains(github.event.head_commit.message, '[teste-video]') }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
