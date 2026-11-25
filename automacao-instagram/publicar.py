@@ -142,6 +142,8 @@ def publicar_reel(ciclo, post, reg, pub, de_verdade):
         print(f"SIMULAÇÃO — {ciclo.name}: reel aprovado por {reg['por']} em {reg['em']}, "
               f"{video.name} {video.stat().st_size / 1e6:.1f} MB, legenda {len(legenda)} caracteres")
         print("Chamadas que seriam feitas:\n  " + "\n  ".join(passos))
+        if story_chamada(ciclo, post):
+            publicar_chamada(ciclo, post, pub, False)
         print("Configuração faltando para publicar: " + (", ".join(faltando) if faltando else "nada"))
         return
     if faltando:
@@ -168,6 +170,9 @@ def publicar_reel(ciclo, post, reg, pub, de_verdade):
                                "em": datetime.now().isoformat(timespec="seconds"),
                                "impressao_digital": reg["impressao_digital"]}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"PUBLICADO: {link or mid}")
+    if story_chamada(ciclo, post):
+        time.sleep(30)  # o reel aparece no perfil antes de o story chamar para ele
+        publicar_chamada(ciclo, post, pub, True)
 
 
 def publicar_stories(ciclo, post, reg, pub, imgs, de_verdade):

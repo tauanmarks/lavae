@@ -23,6 +23,19 @@ def conferir(nome: str) -> list[str]:
         else:
             erros += conferir_video_reel(fs[0])
         resumo = f"reel {fs[0].stat().st_size / 1e6:.1f} MB" if fs else "reel sem vídeo"
+        chamada = story_chamada(ciclo, post)
+        if chamada:  # o story de chamada também sai depois do reel
+            if not chamada.exists():
+                erros.append(f"story de chamada {post['story_chamada']} não encontrado")
+            else:
+                im = Image.open(chamada)
+                if im.format != "JPEG" or im.size != (1080, 1920):
+                    erros.append(f"story de chamada: {im.format} {im.size[0]}×{im.size[1]} (precisa JPEG 1080×1920)")
+                if post.get("origem") == "canva":
+                    erros += checar_encaixe.checar_varios([chamada])
+                resumo += " + story de chamada"
+        if post.get("agendar_para"):
+            resumo += f", agendado para {post['agendar_para']}"
     else:
         fs = imagens(ciclo)
         if not fs:

@@ -1,0 +1,9 @@
+{
+ "duracao": 12,
+ "audio": "",
+ "paginas": [
+  {"tipo": "capa", "inicio": 0, "fim": 4, "selo": "dica lavaê", "titulo": [{"texto": "Cheiro de", "t": 0.7}, {"texto": "guardado", "destaque": true, "t": 1.2}, {"texto": "na roupa?", "t": 2.6}], "subtitulo": {"texto": "mesmo recém-lavada", "t": 3.0}},
+  {"tipo": "dica", "inicio": 4, "fim": 8, "n": 1, "titulo": [{"texto": "Roupa molhada", "t": 4.6}, {"texto": "parada.", "destaque": true, "t": 5.2}], "blocos": [{"tipo": "apoio", "texto": "Na maioria das vezes, o cheiro vem de um detalhe.", "t": 5.8}]},
+  {"tipo": "final", "inicio": 8, "fim": 12, "t": {"logo": 8.05, "faixa": 8.3, "cena": 8.6, "horario": 9.2, "lavar": 10.4, "facil": 10.9}}
+ ]
+}

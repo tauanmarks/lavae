@@ -32,3 +32,11 @@ Thumbs.db
 ferramentas/remotion-projeto/.agents/
 automacao-instagram/stories/aprovacao.html
 automacao-instagram/stories/_render/
+
+# Vídeo automático de sexta
+automacao-instagram/video-carrossel/node_modules/
+automacao-instagram/video-carrossel/public/render/
+automacao-instagram/video-carrossel/src/*.layout.json
+automacao-instagram/ciclos/*/video/teste.mp4
+.remotion/
+_teste-video/

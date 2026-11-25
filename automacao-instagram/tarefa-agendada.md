@@ -106,6 +106,47 @@ Passos (ferramentas do conector Canva):
 Se o Canva falhar (conector fora, erro de edição), **não publique nada feito de outro jeito**: pare e deixe um
 arquivo `automacao-instagram/ciclos/<pasta>/FALHOU.md` explicando, faça commit dele e termine.
 
+## 3b. SEXTA: roteiro do vídeo (Reels)
+
+Na sexta o post vai ao ar como **vídeo** (carrossel animado narrado pela Francisca). Você continua fazendo o
+carrossel do Canva normalmente (passos 1 a 4): ele é a **reserva** e sai se qualquer conferência do vídeo falhar.
+Na terça não faça vídeo.
+
+Além do carrossel, grave `automacao-instagram/ciclos/<pasta>/video/roteiro.json` com o MESMO conteúdo das dicas.
+Modelo completo e aprovado: `automacao-instagram/video-carrossel/exemplo-roteiro.json` (copie a estrutura).
+
+```json
+{"paginas": [
+  {"tipo": "capa", "fala": "frase falada", "selo": "dica lavaê",
+   "titulo": [{"texto": "linha 1", "gatilho": "palavra"}, {"texto": "linha 2", "destaque": true, "gatilho": "palavra"}],
+   "subtitulo": {"texto": "complemento curto", "gatilho": "palavra"}},
+  {"tipo": "dica", "fala": "frase falada",
+   "selo_topo": {"texto": "opcional", "gatilho": "palavra"},
+   "titulo": [{"texto": "...", "gatilho": "..."}],
+   "blocos": [{"tipo": "apoio", "texto": "...", "gatilho": "..."},
+              {"tipo": "selo", "texto": "...", "destaque": false, "gatilho": "..."},
+              {"tipo": "check", "texto": "...", "gatilho": "..."}]},
+  {"tipo": "final"}
+]}
+```
+
+Regras (o GitHub confere todas; se algo falhar, sai o carrossel e fica `video/FALHOU.md` com o motivo):
+- Ordem: 1 capa, **2 a 5 dicas**, 1 final. A final é fixa (logo, horário, endereço, "lavar ficou fácil!"):
+  só `{"tipo": "final"}`, sem fala; a narração dela é sempre a mesma.
+- `fala`: o que a Francisca diz na página, 5 a 38 palavras, frase natural e completa. Total do vídeo fica entre
+  25 e 60 s (≈ 2,3 palavras por segundo). Números e horários **por extenso** na fala ("trinta minutos",
+  "seis e meia"); na tela pode usar algarismos ("30 min").
+- Cada texto da tela tem um `gatilho`: UMA palavra que aparece na fala daquela página; o texto entra quando ela é
+  dita. Escolha palavras que aparecem só uma vez na fala.
+- `titulo`: 1 a 3 trechos (cada trecho começa numa linha nova), até 28 caracteres cada. `destaque: true` pinta o
+  trecho de azul (use em 1 trecho por título). Capa: selo até 18 caracteres, subtítulo até 26.
+- `blocos` da dica: 1 a 4. `apoio` (frase de apoio, até 120), `selo` (pílula verde; `destaque` = azul; até 24),
+  `check` (item com ✓, até 34). Selos e checks ficam bonitos em sequência de 2 a 3.
+- Mesmas regras de fatos do post: só `fatos-lavae.md` sobre a Lavaê; dica geral só com fonte na pesquisa.
+- **Legenda** do post.json serve para os dois formatos: não escreva "arraste", "carrossel", "vídeo" nem "assista".
+- O vídeo é medido com as fontes de verdade: título comprido demais ou coluna de texto que desce até a área dos
+  botões do Instagram faz o vídeo ser recusado. Prefira textos curtos na tela e deixe a explicação na fala.
+
 ## 4. Conferir, aprovar e agendar
 
 ```bash
@@ -131,6 +172,11 @@ git commit -m "Post automático <AAAA-MM-DD>: <pauta>"
 git push origin main
 ```
 
+- Na sexta, confira antes do commit que `video/roteiro.json` existe e é JSON válido
+  (`python -c "import json;json.load(open('automacao-instagram/ciclos/<pasta>/video/roteiro.json',encoding='utf-8'))"`)
+  e rode a conferência do roteiro: `python -c "import sys,json;sys.path.insert(0,'automacao-instagram');import gerar_video as g;e=g.conferir_roteiro(json.load(open('automacao-instagram/ciclos/<pasta>/video/roteiro.json',encoding='utf-8')));print(e or 'roteiro OK')"`
+  (precisa `pip install numpy`). Corrija até sair "roteiro OK". O push dispara o workflow "Gerar vídeo de sexta",
+  que narra, renderiza, confere e troca o post para reel sozinho (ou mantém o carrossel se algo falhar).
 - Nunca use `[publicado]` na mensagem. Nunca rode `publicar.py --de-verdade`: o GitHub publica às 11h.
 - Se o push for recusado, `git pull --rebase origin main` e tente de novo.
 - Termine com um resumo curto: pauta, formato, link do Canva, e o que pode dar errado.

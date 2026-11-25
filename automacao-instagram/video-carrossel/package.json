@@ -1,0 +1,24 @@
+{
+  "name": "lavae-video-carrossel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vídeo automático de sexta da Lavaê: páginas do modelo de carrossel (camadas do Canva) animadas sobre a narração.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.542",
+    "@remotion/cli": "4.0.542",
+    "@remotion/google-fonts": "4.0.542",
+    "@remotion/layout-utils": "4.0.542",
+    "@remotion/renderer": "4.0.542",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.542"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}

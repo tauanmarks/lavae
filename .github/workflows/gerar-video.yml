@@ -1,0 +1,105 @@
+# Vídeo automático de sexta (Reels no estilo carrossel animado).
+# A rotina da nuvem de quinta grava o carrossel do Canva (reserva, já aprovado) + video/roteiro.json. Este workflow
+# narra, mede os textos, renderiza e confere tudo; só se TUDO passar o post vira reel. Qualquer falha: fica o
+# carrossel e o motivo vai para video/FALHOU.md. Ninguém precisa revisar nada.
+name: Gerar vídeo de sexta
+
+on:
+  push:
+    branches: [main]
+    paths: ["automacao-instagram/ciclos/**/video/roteiro.json"]
+  schedule:
+    - cron: "0 9 * * 5"    # reserva: sexta 6h em São Luís (se o disparo de quinta não rodou)
+    - cron: "30 10 * * 5"  # reserva: sexta 7h30
+  workflow_dispatch:
+    inputs:
+      ciclo:
+        description: "Pasta do ciclo (vazio = todos os pendentes)"
+        required: false
+      teste:
+        description: "Só testar (sem ciclo = roteiro de exemplo). Gera o vídeo como artefato e não troca nenhum post"
+        type: boolean
+        default: false
+
+concurrency:
+  group: gerar-video
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-24.04
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[video]') }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: automacao-instagram/video-carrossel/package-lock.json
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Programas (ffmpeg, emoji, bibliotecas do navegador)
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg fonts-noto-color-emoji libnss3 libdbus-1-3 libatk1.0-0t64 libatk-bridge2.0-0t64 \
+            libgbm1 libasound2t64 libxrandr2 libxkbcommon0 libxfixes3 libxcomposite1 libxdamage1 libpango-1.0-0 libcairo2 libcups2t64
+          pip install -q edge-tts pillow numpy
+
+      - name: Dependências do vídeo
+        working-directory: automacao-instagram/video-carrossel
+        run: |
+          npm ci --no-audit --no-fund
+          npx remotion browser ensure
+
+      - name: Gerar e conferir
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.ciclo }}" ]; then ARGS="${{ github.event.inputs.ciclo }}"; else ARGS="--pendentes"; fi
+          if [ "${{ github.event.inputs.teste }}" = "true" ]; then
+            if [ -n "${{ github.event.inputs.ciclo }}" ]; then ARGS="$ARGS --teste"; else ARGS="--exemplo"; fi
+          fi
+          python automacao-instagram/gerar_video.py $ARGS
+
+      - name: Guardar teste e quadros (artefato)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: video-${{ github.run_id }}
+          path: |
+            automacao-instagram/ciclos/*/video/teste.mp4
+            _teste-video/video/
+            _teste-video/_render/pagina-*.jpg
+            automacao-instagram/ciclos/*/_render/pagina-*.jpg
+            automacao-instagram/ciclos/*/_render/props*.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Gravar resultado
+        if: ${{ github.event.inputs.teste != 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in automacao-instagram/ciclos/*/video/RESULTADO.md automacao-instagram/ciclos/*/video/FALHOU.md \
+                   automacao-instagram/ciclos/*/video.mp4 automacao-instagram/ciclos/*/post.json \
+                   automacao-instagram/ciclos/*/post-carrossel.json automacao-instagram/ciclos/*/aprovacao.json; do
+            [ -f "$f" ] && git add "$f"
+          done
+          if git diff --cached --quiet; then echo "Nada para gravar."; exit 0; fi
+          git commit -m "Vídeo automático de sexta [video]"
+          for tentativa in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep $((tentativa * 5))
+          done
+          echo "::error::Não consegui gravar o resultado; o post continua como carrossel."
+          exit 1

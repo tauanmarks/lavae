@@ -1,0 +1,32 @@
+{
+ "paginas": [
+  {"tipo": "capa", "fala": "Sabe aquele cheiro de guardado que aparece até na roupa recém-lavada?",
+   "selo": "dica lavaê",
+   "titulo": [{"texto": "Cheiro de", "gatilho": "cheiro"}, {"texto": "guardado", "destaque": true, "gatilho": "guardado"}, {"texto": "na roupa?", "gatilho": "roupa"}],
+   "subtitulo": {"texto": "mesmo recém-lavada", "gatilho": "recém"}},
+  {"tipo": "dica", "fala": "Na maioria das vezes, ele vem de um detalhe: a roupa molhada que fica parada.",
+   "titulo": [{"texto": "Roupa molhada", "gatilho": "molhada"}, {"texto": "parada.", "destaque": true, "gatilho": "parada"}],
+   "blocos": [{"tipo": "apoio", "texto": "Na maioria das vezes, o cheiro vem de um detalhe:", "gatilho": "maioria"}]},
+  {"tipo": "dica", "fala": "Úmida e abafada, ela vira o lugar perfeito para o mofo e as bactérias que causam o cheiro.",
+   "titulo": [{"texto": "Úmida", "gatilho": "úmida"}, {"texto": "e abafada", "destaque": true, "gatilho": "abafada"}],
+   "blocos": [{"tipo": "apoio", "texto": "vira o lugar perfeito para:", "gatilho": "lugar"},
+              {"tipo": "selo", "texto": "mofo", "gatilho": "mofo"},
+              {"tipo": "selo", "texto": "bactérias", "gatilho": "bactérias"},
+              {"tipo": "selo", "texto": "cheiro de guardado", "destaque": true, "gatilho": "causam"}]},
+  {"tipo": "dica", "fala": "Por isso, a regra é simples: lavou, já seca. Nada de deixar para depois.",
+   "selo_topo": {"texto": "a regra é simples", "gatilho": "regra"},
+   "titulo": [{"texto": "Lavou,", "gatilho": "lavou"}, {"texto": "já seca.", "destaque": true, "gatilho": "seca"}],
+   "blocos": [{"tipo": "apoio", "texto": "Nada de deixar para depois.", "gatilho": "nada"}]},
+  {"tipo": "dica", "fala": "Na Lavaê, são trinta minutos para lavar e quarenta e cinco para secar, com Omo e Comfort na dose certa.",
+   "titulo": [{"texto": "Na Lavaê", "gatilho": "lavaê"}],
+   "blocos": [{"tipo": "check", "texto": "Lavar · 30 min", "gatilho": "trinta"},
+              {"tipo": "check", "texto": "Secar · 45 min", "gatilho": "quarenta"},
+              {"tipo": "check", "texto": "Omo + Comfort na dose certa", "gatilho": "omo"}]},
+  {"tipo": "dica", "fala": "Em pouco mais de uma hora, sua roupa sai limpa, sequinha e cheirosa.",
+   "titulo": [{"texto": "Cerca de 1h15", "gatilho": "hora"}],
+   "blocos": [{"tipo": "check", "texto": "limpa", "gatilho": "limpa"},
+              {"tipo": "check", "texto": "sequinha", "gatilho": "sequinha"},
+              {"tipo": "check", "texto": "cheirosa", "gatilho": "cheirosa"}]},
+  {"tipo": "final"}
+ ]
+}
