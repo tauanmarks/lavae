@@ -1,0 +1,175 @@
+{
+ "paginas": [
+  {
+   "tipo": "capa",
+   "fala": "Você sabe de quanto em quanto tempo a roupa de cama deve ser lavada?",
+   "selo": "você sabia?",
+   "titulo": [
+    {
+     "texto": "Roupa de cama:",
+     "gatilho": "roupa"
+    },
+    {
+     "texto": "quando lavar?",
+     "destaque": true,
+     "gatilho": "lavada"
+    }
+   ],
+   "subtitulo": {
+    "texto": "lençol e fronha",
+    "gatilho": "tempo"
+   }
+  },
+  {
+   "tipo": "dica",
+   "fala": "Lençol, fronha e capa do edredom: segundo dermatologistas, o ideal é trocar e lavar uma vez por semana.",
+   "titulo": [
+    {
+     "texto": "Uma vez",
+     "gatilho": "vez"
+    },
+    {
+     "texto": "por semana",
+     "destaque": true,
+     "gatilho": "semana"
+    }
+   ],
+   "blocos": [
+    {
+     "tipo": "check",
+     "texto": "lençol",
+     "gatilho": "lençol"
+    },
+    {
+     "tipo": "check",
+     "texto": "fronha",
+     "gatilho": "fronha"
+    },
+    {
+     "tipo": "check",
+     "texto": "capa do edredom",
+     "gatilho": "capa"
+    }
+   ]
+  },
+  {
+   "tipo": "dica",
+   "fala": "A cada noite, ficam no tecido suor, oleosidade, pele morta e ácaros. Com calor e umidade, eles se multiplicam.",
+   "titulo": [
+    {
+     "texto": "A cada noite",
+     "gatilho": "noite"
+    }
+   ],
+   "blocos": [
+    {
+     "tipo": "selo",
+     "texto": "suor",
+     "gatilho": "suor"
+    },
+    {
+     "tipo": "selo",
+     "texto": "oleosidade",
+     "gatilho": "oleosidade"
+    },
+    {
+     "tipo": "selo",
+     "texto": "ácaros",
+     "destaque": true,
+     "gatilho": "ácaros"
+    },
+    {
+     "tipo": "apoio",
+     "texto": "Com calor e umidade, eles se multiplicam.",
+     "gatilho": "umidade"
+    }
+   ]
+  },
+  {
+   "tipo": "dica",
+   "fala": "No calor, quem sua muito, tem alergia ou dorme com pet pode trocar a cada três ou quatro dias.",
+   "titulo": [
+    {
+     "texto": "Calor ou alergia?",
+     "gatilho": "calor"
+    },
+    {
+     "texto": "Mais vezes",
+     "destaque": true,
+     "gatilho": "alergia"
+    }
+   ],
+   "blocos": [
+    {
+     "tipo": "apoio",
+     "texto": "Quem sua muito ou dorme com pet:",
+     "gatilho": "pet"
+    },
+    {
+     "tipo": "selo",
+     "texto": "a cada 3 ou 4 dias",
+     "destaque": true,
+     "gatilho": "quatro"
+    }
+   ]
+  },
+  {
+   "tipo": "dica",
+   "fala": "Edredom e cobertor, usados com capa ou lençol, podem ir para a máquina a cada dois ou três meses.",
+   "titulo": [
+    {
+     "texto": "Edredom",
+     "gatilho": "edredom"
+    },
+    {
+     "texto": "e cobertor",
+     "destaque": true,
+     "gatilho": "cobertor"
+    }
+   ],
+   "blocos": [
+    {
+     "tipo": "apoio",
+     "texto": "Usados com capa ou lençol:",
+     "gatilho": "capa"
+    },
+    {
+     "tipo": "selo",
+     "texto": "a cada 2 ou 3 meses",
+     "destaque": true,
+     "gatilho": "meses"
+    }
+   ]
+  },
+  {
+   "tipo": "dica",
+   "fala": "Na Lavaê, são trinta minutos para lavar e quarenta e cinco para secar, com Omo e Comfort na dose certa.",
+   "titulo": [
+    {
+     "texto": "Na Lavaê",
+     "gatilho": "lavaê"
+    }
+   ],
+   "blocos": [
+    {
+     "tipo": "check",
+     "texto": "Lavar · 30 min",
+     "gatilho": "trinta"
+    },
+    {
+     "tipo": "check",
+     "texto": "Secar · 45 min",
+     "gatilho": "quarenta"
+    },
+    {
+     "tipo": "check",
+     "texto": "Omo + Comfort na dose certa",
+     "gatilho": "omo"
+    }
+   ]
+  },
+  {
+   "tipo": "final"
+  }
+ ]
+}
