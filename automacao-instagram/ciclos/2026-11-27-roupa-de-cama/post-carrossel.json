@@ -1,0 +1,31 @@
+{
+ "ciclo": "2026-11-27-roupa-de-cama",
+ "conta": "lavae",
+ "formato": "carrossel",
+ "marca": "espuma",
+ "origem": "canva",
+ "pauta": "Roupa de cama: de quanto em quanto tempo lavar lençol, fronha, edredom e cobertor (você sabia? / guia rápido)",
+ "fontes_fatos": [
+  "Lençol, fronha e capa do edredom: trocar e lavar uma vez por semana (dermatologistas): pesquisa.md (CNN Brasil/SBD, Cleveland Clinic)",
+  "Suor, oleosidade, pele morta e ácaros se acumulam; calor e umidade favorecem a proliferação de ácaros e bactérias: pesquisa.md (CNN Brasil/SBD, Cleveland Clinic)",
+  "Quem sua muito, tem alergia ou dorme com pet: a cada 3 ou 4 dias; clima quente e úmido pede lavar mais: pesquisa.md (CNN Brasil/SBD, Cleveland Clinic)",
+  "Edredom e cobertor usados com capa ou lençol: a cada 2 ou 3 meses: pesquisa.md (CNN Brasil/SBD)",
+  "Lavar 30 min, secar 45 min (~1h15), Omo e Comfort com dosagem automática, endereço e horário: fatos-lavae.md"
+ ],
+ "slides": [
+  {"tipo": "capa", "pilula": "você sabia?", "titulo": "Roupa de cama: quando lavar?", "texto": "lençol e fronha"},
+  {"tipo": "dica", "n": 1, "titulo": "Uma vez por semana", "texto": "Lençol, fronha e capa do edredom: dermatologistas indicam trocar e lavar tudo uma vez por semana."},
+  {"tipo": "dica", "n": 2, "titulo": "O que fica no lençol", "texto": "Suor, oleosidade, pele morta e ácaros se acumulam a cada noite. Com calor e umidade, ácaros e bactérias se multiplicam."},
+  {"tipo": "dica", "n": 3, "titulo": "Calor ou alergia? Mais vezes", "texto": "Quem sua muito, tem alergia ou dorme com pet pode trocar a cada 3 ou 4 dias. Em clima quente e úmido, vale lavar mais."},
+  {"tipo": "dica", "n": 4, "titulo": "Edredom e cobertor", "texto": "Usados com capa ou lençol, podem ir a cada 2 ou 3 meses. Na Lavaê, lavar leva 30 min e secar, 45 min."},
+  {"tipo": "final", "frase": "lavar ficou fácil!", "chamada": "Salve este post e compartilhe 💙", "rodape": "📍 Edifício Dom Center · Rua do Aririzal / Av. São Luís Rei de França · todos os dias, 6h30 à meia-noite"}
+ ],
+ "legenda": "De quanto em quanto tempo a roupa de cama deve ir para a máquina? 🛏️\n\nO que os dermatologistas recomendam:\n\n🗓️ Lençol, fronha e capa do edredom: uma vez por semana\n💧 A cada noite ficam suor, oleosidade, pele morta e ácaros. Com calor e umidade, ácaros e bactérias se multiplicam\n🌡️ Quem sua muito, tem alergia ou dorme com pet: a cada 3 ou 4 dias\n🧺 Edredom e cobertor usados com capa ou lençol: a cada 2 ou 3 meses\n\nNa Lavaê, o jogo de cama fica limpo e sequinho em cerca de 1h15: 30 min para lavar e 45 min para secar, com Omo e Comfort na dose certa. Você não precisa trazer nada além da roupa.\n\n📍 Edifício Dom Center – Rua do Aririzal / Av. São Luís Rei de França\n🕕 Todos os dias, das 6h30 à meia-noite\n\nSalve para lembrar 💙",
+ "hashtags": ["#lavanderia", "#lavanderiaselfservice", "#dicasdelavagem", "#roupalimpa", "#cuidadoscomaroupa", "#roupadecama", "#saoluis", "#saoluisma", "#lavanderiasaoluis", "#lavae"],
+ "rotulo_ia": false,
+ "agendar_para": "2026-11-27T11:00",
+ "story_chamada": "story/chamada.jpg",
+ "automatico": true,
+ "canva": {"feed": "DAHcD__40sc", "story": "DAHcD5Qvhoc", "modelo": "DAHbdymvpHc"},
+ "pendencias": []
+}
